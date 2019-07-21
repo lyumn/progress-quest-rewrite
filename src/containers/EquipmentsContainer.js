@@ -1,14 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { getEquipments } from '../reducers/equipments'
-import Equipments from '../components/Equipments'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getEquipments } from '../reducers/equipments';
+import Equipments from '../components/Equipments';
 
-const EquipmentContainer = ({ equipments }) => (
-  <Equipments
-    data={equipments}
-  />
-)
+const EquipmentContainer = ({ equipments }) => <Equipments data={equipments} />;
 
 // InventoryContainer.propTypes = {
 //   inventory: PropTypes.arrayOf(PropTypes.shape({
@@ -17,11 +13,11 @@ const EquipmentContainer = ({ equipments }) => (
 //   })).isRequired,
 // }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   equipments: getEquipments(state),
-})
+});
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps
   // { checkout }
-)(EquipmentContainer)
+)(EquipmentContainer);

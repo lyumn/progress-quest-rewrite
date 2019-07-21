@@ -7,29 +7,13 @@ import EquipmentsContainer from './EquipmentsContainer';
 import PlotDevelopmentContainer from './PlotDevelopmentContainer';
 import QuestsContainer from './QuestsContainer';
 import SpellBookContainer from './SpellBookContainer';
+import { useState, useEffect } from 'react';
 
-const theme = {
-  global: {
-    font: {
-      family: 'Roboto',
-      size: '14px',
-      height: '20px',
-    },
-  },
-};
-
-
-// const App = props => (
-//   <Grommet theme={theme}>
-//     <Box align="center" border={{ color: 'brand', size: 'large' }} pad='xlarge' >
-//       <CharacterSheet gridArea='top' />
-//     </Box>
-//     <InventoryContainer />
-//   </Grommet>
-// );
-
-const MainContainer = props => (
-  <Grommet theme={theme}>
+const MainContainer = props => {
+  useEffect(() => {
+    // load data
+  });
+  return (
     <Grid
       areas={[
         { name: 'top', start: [0, 0], end: [2, 0] },
@@ -42,19 +26,23 @@ const MainContainer = props => (
         { name: 'status', start: [0, 3], end: [2, 3] },
       ]}
       columns={['1/3', '1/3', '1/3']}
-      rows={['xsmall', 'medium', 'medium', 'small']}
-      gap='small'
+      rows={['xxsmall', 'medium', 'medium', 'small']}
+      gap="small"
+      style={{width: '686px', margin: '0 auto'}}
     >
-      <Box gridArea='top' background='brand' />
-      <CharacterSheetContainer gridArea='character-sheet' justify='stretch' />
-      <EquipmentsContainer gridArea='equipment' background='brand' />
-      <PlotDevelopmentContainer gridArea='plot-development' background='brand' />
-      <SpellBookContainer gridArea='spell-book' background='accent-1' />
-      <InventoryContainer gridArea='inventory' />
-      <QuestsContainer gridArea='quests' background='accent-1' />
-      <Box gridArea='status' background='accent-1' />
+      <Box gridArea="top"><h1>Progress Quest</h1></Box>
+      <CharacterSheetContainer gridArea="character-sheet" justify="stretch" />
+      <EquipmentsContainer gridArea="equipment" background="brand" />
+      <PlotDevelopmentContainer
+        gridArea="plot-development"
+        background="brand"
+      />
+      <SpellBookContainer gridArea="spell-book" background="accent-1" />
+      <InventoryContainer gridArea="inventory" />
+      <QuestsContainer gridArea="quests" background="accent-1" />
+      <Box gridArea="status" background="accent-1" />
     </Grid>
-  </Grommet>
-);
+  );
+};
 
 export default MainContainer;

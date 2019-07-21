@@ -1,27 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { getInventory } from '../reducers/inventory'
-import Inventory from '../components/Inventory'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getInventory } from '../reducers/inventory';
+import Inventory from '../components/Inventory';
 
-const InventoryContainer = ({ inventory }) => (
-  <Inventory
-    data={inventory}
-  />
-)
+const InventoryContainer = ({ inventory }) => <Inventory data={inventory} />;
 
 InventoryContainer.propTypes = {
-  inventory: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
-  })).isRequired,
-}
+  inventory: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   inventory: getInventory(state),
-})
+});
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps
   // { checkout }
-)(InventoryContainer)
+)(InventoryContainer);

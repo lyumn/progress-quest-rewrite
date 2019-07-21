@@ -1,14 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { getSpellBook } from '../reducers/spellBook'
-import SpellBook from '../components/SpellBook'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getSpellBook } from '../reducers/spellBook';
+import SpellBook from '../components/SpellBook';
 
-const SpellBookContainer = ({ spellBook }) => (
-  <SpellBook
-    data={spellBook}
-  />
-)
+const SpellBookContainer = ({ spellBook }) => <SpellBook data={spellBook} />;
 
 // InventoryContainer.propTypes = {
 //   inventory: PropTypes.arrayOf(PropTypes.shape({
@@ -17,11 +13,11 @@ const SpellBookContainer = ({ spellBook }) => (
 //   })).isRequired,
 // }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   spellBook: getSpellBook(state),
-})
+});
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps
   // { checkout }
-)(SpellBookContainer)
+)(SpellBookContainer);

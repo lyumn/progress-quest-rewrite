@@ -1,14 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { getCharacterSheet } from '../reducers/characterSheet'
-import CharacterSheet from '../components/CharacterSheet'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getCharacterSheet } from '../reducers/characterSheet';
+import CharacterSheet from '../components/CharacterSheet';
 
 const CharacterSheetContainer = ({ characterSheet }) => (
-  <CharacterSheet
-    data={characterSheet}
-  />
-)
+  <CharacterSheet data={characterSheet} />
+);
 
 // InventoryContainer.propTypes = {
 //   inventory: PropTypes.arrayOf(PropTypes.shape({
@@ -17,11 +15,11 @@ const CharacterSheetContainer = ({ characterSheet }) => (
 //   })).isRequired,
 // }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   characterSheet: getCharacterSheet(state),
-})
+});
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps
   // { checkout }
-)(CharacterSheetContainer)
+)(CharacterSheetContainer);

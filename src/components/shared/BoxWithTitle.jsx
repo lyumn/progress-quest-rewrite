@@ -1,14 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import theme from '../../theme'
 
 const styles = {
   box: {
-    border: '3px solid #cccccc',
+    border: '3px solid',
+    borderColor: theme.global.colors['accent-1'],
     borderRadius: '10px',
     textAlign: 'left',
   },
   title:{
-    backgroundColor: 'white',
+    backgroundColor: theme.global.colors.dark,
     position: 'relative',
     top: -12,
     left: 15,

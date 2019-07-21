@@ -6,6 +6,7 @@ import plotDevelopment from './plotDevelopment'
 import quests from './quests'
 import spellBook from './spellBook'
 import status from './status'
+import seed from './seed'
 
 export default combineReducers({
   inventory,
@@ -16,4 +17,5 @@ export default combineReducers({
   quests,
   spellBook,
   status,
+  seed,
 })

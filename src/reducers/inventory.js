@@ -16,6 +16,8 @@ const inventory = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState
+    case 'LOAD_GAME':
+        return state
     default:
       return state
   }

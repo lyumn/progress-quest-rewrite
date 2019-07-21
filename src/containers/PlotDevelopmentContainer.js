@@ -1,14 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { getPlotDevelopment } from '../reducers/plotDevelopment'
-import PlotDevelopment from '../components/PlotDevelopment'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getPlotDevelopment } from '../reducers/plotDevelopment';
+import PlotDevelopment from '../components/PlotDevelopment';
 
 const PlotDevelopmentContainer = ({ plotDevelopment }) => (
-  <PlotDevelopment
-    data={plotDevelopment}
-  />
-)
+  <PlotDevelopment data={plotDevelopment} />
+);
 
 // InventoryContainer.propTypes = {
 //   inventory: PropTypes.arrayOf(PropTypes.shape({
@@ -17,11 +15,11 @@ const PlotDevelopmentContainer = ({ plotDevelopment }) => (
 //   })).isRequired,
 // }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   plotDevelopment: getPlotDevelopment(state),
-})
+});
 
 export default connect(
-  mapStateToProps,
+  mapStateToProps
   // { checkout }
-)(PlotDevelopmentContainer)
+)(PlotDevelopmentContainer);

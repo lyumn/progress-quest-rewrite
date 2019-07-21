@@ -3,8 +3,32 @@ import PropTypes from 'prop-types'
 import { Box, Grid } from 'grommet';
 import BoxWithTitle from './shared/BoxWithTitle';
 import ProgressBar from './shared/ProgressBar';
+import GameTable from './shared/GameTable'
 
 
+const COLUMNS = [
+  {
+    property: 'item',
+    label: 'Item',
+  },
+  {
+    property: 'qty',
+    label: 'Qty',
+  },
+];
+
+const InventoryTable = (props) => {
+  const data = props.items.map(function(value) {
+    return {
+      item: value['name'],
+      qty: value['quantity']
+    };
+  });
+
+  return (
+    <GameTable data={data} columns={COLUMNS} hasHeader={true} />
+  )
+};
 
 const Inventory = props => (
   <Grid
@@ -16,7 +40,9 @@ const Inventory = props => (
     rows={['flex', '30px']}
     gap='small'
   >
-    <BoxWithTitle gridArea='table' title='Inventory'>{JSON.stringify(props.data).toString()}</BoxWithTitle>
+    <BoxWithTitle gridArea='table' title='Inventory'>
+      <InventoryTable items={props.data} />
+    </BoxWithTitle>
     <Box gridArea='tracking'>
       <div>Encumbrance</div>
       <ProgressBar width={'75%'}/>

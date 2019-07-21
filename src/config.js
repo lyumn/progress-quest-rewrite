@@ -689,3 +689,8 @@ window.K.ImpressiveTitles = [
   "Chief",
   "Boss",
   "Archbishop"];
+
+Number.prototype.div = function (divisor) {
+  var dividend = this / divisor;
+  return (dividend < 0 ? Math.ceil : Math.floor)(dividend);
+}; // where should this belong to?

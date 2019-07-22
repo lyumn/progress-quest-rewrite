@@ -1,3 +1,5 @@
+import random from 'random'
+
 const initialState = [  
    [  
       "Lockjaw",
@@ -79,14 +81,22 @@ const initialState = [
 
 export const getSpellBook = (state) =>
    state.spellBook
- 
+
+const levelUp = (state) => {
+   const newState = [...state]
+   newState.push([window.K.Spells[random.int(0, window.K.Spells.length-1)], 'I'])
+
+   return newState;
+}
 
 const spellBook = (state = initialState, action) => {
  switch (action.type) {
    case '1':
      return initialState
-     case 'LOAD_GAME':
-      return state
+   case 'LOAD_GAME':
+   return state
+   case 'LEVEL_UP':
+      return levelUp(state)
    default:
      return state
  }

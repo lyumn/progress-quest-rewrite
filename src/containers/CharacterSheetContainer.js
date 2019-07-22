@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCharacterSheet } from '../reducers/characterSheet';
+import { getPosition } from '../reducers/bars/experienceBar';
 import CharacterSheet from '../components/CharacterSheet';
 
-const CharacterSheetContainer = ({ characterSheet }) => (
-  <CharacterSheet data={characterSheet} />
+const CharacterSheetContainer = ({ characterSheet, experience }) => (
+  <CharacterSheet characterSheet={characterSheet} experience={experience}/>
 );
 
 CharacterSheetContainer.propTypes = {
-  data: PropTypes.shape({
+  characterSheet: PropTypes.shape({
     Stats: PropTypes.shape({
       'CHA': PropTypes.number.isRequired,
       'CON': PropTypes.number.isRequired,
@@ -32,6 +33,7 @@ CharacterSheetContainer.propTypes = {
 
 const mapStateToProps = state => ({
   characterSheet: getCharacterSheet(state),
+  experience: getPosition(state),
 });
 
 export default connect(

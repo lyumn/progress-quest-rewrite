@@ -45,7 +45,7 @@ const Inventory = props => (
     </BoxWithTitle>
     <Box gridArea='tracking'>
       <div>Encumbrance</div>
-      <ProgressBar width={'75%'}/>
+      <ProgressBar width={props.encumbrance}/>
     </Box>
   </Grid>
 

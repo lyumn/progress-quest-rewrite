@@ -16,13 +16,13 @@ const CharacterSheet = props => (
   gap='small'
 >
     <BoxWithTitle gridArea='table' title='Character Sheet'>
-    <TraitsTable traits={props.data['Traits']}></TraitsTable>
+    <TraitsTable traits={props.characterSheet['Traits']}></TraitsTable>
     <p></p>
-    <StatsTable stats={props.data['Stats']}></StatsTable>
+    <StatsTable stats={props.characterSheet['Stats']}></StatsTable>
   </BoxWithTitle>
   <Box gridArea='xp'>
       <div>Experience</div>
-      <ExperienceBar width={'50%'}/>
+      <ExperienceBar width={props.experience}/>
     </Box>
     </Grid>
 

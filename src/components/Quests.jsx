@@ -1,12 +1,26 @@
 import React from 'react';
-import {
-  Table, TableBody, TableCell, TableFooter, TableHeader, TableRow,
-  Text,
-} from 'grommet';
+import { Box, Grid } from 'grommet';
+
 import BoxWithTitle from './shared/BoxWithTitle';
+import ProgressBar from './shared/ProgressBar';
 
 const Quests = props => (
-  <BoxWithTitle gridArea='table' title='Quests'>{JSON.stringify(props.data).toString()}</BoxWithTitle>
+<Grid
+areas={[
+  { name: 'table', start: [0, 0], end: [0, 0] },
+  { name: 'tracking', start: [0, 1], end: [0, 1] },
+]}
+columns={['flex']}
+rows={['flex', '10px']}
+gap='small'
+>
+<BoxWithTitle gridArea='table' title='Quests'>
+{JSON.stringify(props.data).toString()}
+</BoxWithTitle>
+<Box gridArea='tracking'>
+  <ProgressBar width={props.questProgress}/>
+</Box>
+</Grid>  
 );
 
 // Inventory.propTypes = {
@@ -15,5 +29,7 @@ const Quests = props => (
 //     quantity: PropTypes.number.isRequired,
 //   })).isRequired,
 // }
+
+
 
 export default Quests;

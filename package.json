@@ -7,6 +7,7 @@
     "grommet": "^2.7.1",
     "lodash": "^4.17.14",
     "polished": "^3.4.1",
+    "random": "^2.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",

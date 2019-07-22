@@ -83,3 +83,7 @@ export function Alea() {
     
   } (Array.prototype.slice.call(arguments)));
 }
+
+// export function Random(n) {
+//   return seed.uint32() % n;
+// }

@@ -1,5 +1,6 @@
 import {Alea} from '../utils/random'
 import {generateName} from '../utils/generation'
+import random from 'random'
 import CharacterSheet from '../components/CharacterSheet';
 
 const initialState = {
@@ -27,6 +28,10 @@ const initialState = {
   "MP Max":74
 }
 }
+
+const STAT_NAMES = [
+  'STR', 'CON', 'DEX', 'INT', 'WIS', 'CHA'
+];
 
 export const getCharacterSheet = (state) =>
   state.characterSheet
@@ -131,6 +136,36 @@ export const getStats = (state) =>
   // const sold
 
 
+  /*
+  function Add(list, key, value) {
+  Put(list, key, value + GetI(list,key));
+
+  if (!value) return;
+  var line = (value > 0) ? "Gained" : "Lost";
+  if (key == 'Gold') {
+    key = "gold piece";
+    line = (value > 0) ? "Got paid" : "Spent";
+  }
+  if (value < 0) value = -value;
+  line = line + ' ' + Indefinite(key, value);
+  Log(line);
+}
+*/
+
+  const levelUp = (state) => {
+    let newState = {'Traits': {...state['Traits']}, Stats:{...state['Stats']}};
+    newState['Traits']['Level'] += 1;
+    newState['Stats']['HP Max'] += newState['Stats']['CON'].div(3) + 1 + random.int(0, 4)
+    newState['Stats']['MP Max'] += newState['Stats']['INT'].div(3) + 1 + random.int(0, 4)
+    const randStat1 = STAT_NAMES[random.int(0, STAT_NAMES.length-1)]
+    const randStat2 = STAT_NAMES[random.int(0, STAT_NAMES.length-1)]
+    newState['Stats'][randStat1] += random.int(0, 3)
+    newState['Stats'][randStat1] += random.int(0, 3)
+
+    return newState
+  }
+
+
 const characterSheet = (state = initialState, action) => {
   switch (action.type) {
     case 'ROLL':
@@ -143,6 +178,8 @@ const characterSheet = (state = initialState, action) => {
       let data;
       // const data = load([state['Traits']['Name'], ['CharacterSheet'])
       return {...state, data}
+    case 'LEVEL_UP':
+      return levelUp(state)
     default:
       return state
   }

@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import { getCharacterSheet } from '../reducers/characterSheet';
 import CharacterSheet from '../components/CharacterSheet';
 
-const CharacterSheetContainer = ({ characterSheet }) => (
-  <CharacterSheet data={characterSheet} />
-);
+const CharacterSheetContainer = ({ characterSheet }) => <CharacterSheet data={characterSheet} />;
 
 // InventoryContainer.propTypes = {
 //   inventory: PropTypes.arrayOf(PropTypes.shape({
@@ -16,7 +14,7 @@ const CharacterSheetContainer = ({ characterSheet }) => (
 // }
 
 const mapStateToProps = state => ({
-  characterSheet: getCharacterSheet(state),
+  characterSheet: getCharacterSheet(state)
 });
 
 export default connect(

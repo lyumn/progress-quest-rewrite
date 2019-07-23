@@ -17,7 +17,8 @@ const theme = {
     //     }
     //  },
      font: {
-      family: "'Bahianita', cursive",
+      // family: "'Bahianita', cursive",
+      family: "'Metal Mania', cursive;",
       size: '12px',
       height: '20px',
     }

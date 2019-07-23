@@ -1,28 +1,27 @@
-const initialState = {  
-  "Act": 2
-}
+const initialState = {
+  Act: 2
+};
 
-export const getPlotDevelopment = (state) =>
- state.plotDevelopment
+export const getPlotDevelopment = state => state.plotDevelopment;
 
-const completeAct = (state) => {
-  const newState = {...state}
-   newState['Act'] += 1
+const completeAct = state => {
+  const newState = { ...state };
+  newState.Act += 1;
 
-   return newState;
-}
+  return newState;
+};
 
 const plotDevelopment = (state = initialState, action) => {
- switch (action.type) {
-   case '1':
-     return initialState
-  case 'LOAD_GAME':
-    return state
-  case 'COMPLETE_ACT':
-    return completeAct(state)
-   default:
-     return state
- }
-}
+  switch (action.type) {
+    case '1':
+      return initialState;
+    case 'LOAD_GAME':
+      return state;
+    case 'COMPLETE_ACT':
+      return completeAct(state);
+    default:
+      return state;
+  }
+};
 
-export default plotDevelopment
+export default plotDevelopment;

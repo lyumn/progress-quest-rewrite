@@ -1,4 +1,3 @@
-
 // const game = (state = {}, action) => {
 //  switch (action.type) {
 //    case 'SOLD':
@@ -6,7 +5,7 @@
 //       window
 //         .localStorage
 //         .setItem(
-//           'roster', 
+//           'roster',
 //           state.characterSheet['Traits']['Name']
 //         )
 //      return state

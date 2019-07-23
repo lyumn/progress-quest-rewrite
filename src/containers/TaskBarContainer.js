@@ -8,10 +8,10 @@ import ProgressBar from '../components/shared/ProgressBar';
 
 const TaskContainer = ({ taskProgress }) => (
   <div>
-      <div>text</div>
-      <ProgressBar width={taskProgress}/>
+    <div>text</div>
+    <ProgressBar width={taskProgress} />
   </div>
-)
+);
 
 // InventoryContainer.propTypes = {
 //   inventory: PropTypes.arrayOf(PropTypes.shape({
@@ -21,12 +21,10 @@ const TaskContainer = ({ taskProgress }) => (
 // }
 
 const mapStateToProps = state => ({
-  taskProgress: getPosition(state),
+  taskProgress: getPosition(state)
 });
 
 export default connect(
   mapStateToProps
   // { checkout }
 )(TaskContainer);
-
-

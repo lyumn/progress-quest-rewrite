@@ -6,36 +6,34 @@ import { getPosition } from '../reducers/bars/experienceBar';
 import CharacterSheet from '../components/CharacterSheet';
 
 const CharacterSheetContainer = ({ characterSheet, experience }) => (
-  <CharacterSheet characterSheet={characterSheet} experience={experience}/>
+  <CharacterSheet characterSheet={characterSheet} experience={experience} />
 );
 
 CharacterSheetContainer.propTypes = {
   characterSheet: PropTypes.shape({
     Stats: PropTypes.shape({
-      'CHA': PropTypes.number.isRequired,
-      'CON': PropTypes.number.isRequired,
-      'DEX': PropTypes.number.isRequired,
+      CHA: PropTypes.number.isRequired,
+      CON: PropTypes.number.isRequired,
+      DEX: PropTypes.number.isRequired,
       'HP Max': PropTypes.number.isRequired,
-      'INT': PropTypes.number.isRequired,
+      INT: PropTypes.number.isRequired,
       'MP Max': PropTypes.number.isRequired,
-      'STR': PropTypes.number.isRequired,
-      'WIS': PropTypes.number.isRequired,
-      'seed': PropTypes.array.isRequired,
+      STR: PropTypes.number.isRequired,
+      WIS: PropTypes.number.isRequired,
+      seed: PropTypes.array.isRequired
     }).isRequired,
     Traits: PropTypes.shape({
-      'Class': PropTypes.string.isRequired,
-      'Level': PropTypes.number.isRequired,
-      'Name': PropTypes.string.isRequired,
-      'Race': PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+      Class: PropTypes.string.isRequired,
+      Level: PropTypes.number.isRequired,
+      Name: PropTypes.string.isRequired,
+      Race: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
 };
 
 const mapStateToProps = state => ({
   characterSheet: getCharacterSheet(state),
-  experience: getPosition(state),
+  experience: getPosition(state)
 });
 
-export default connect(
-  mapStateToProps
-)(CharacterSheetContainer);
+export default connect(mapStateToProps)(CharacterSheetContainer);

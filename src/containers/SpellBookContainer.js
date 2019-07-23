@@ -14,7 +14,7 @@ const SpellBookContainer = ({ spellBook }) => <SpellBook data={spellBook} />;
 // }
 
 const mapStateToProps = state => ({
-  spellBook: getSpellBook(state),
+  spellBook: getSpellBook(state)
 });
 
 export default connect(

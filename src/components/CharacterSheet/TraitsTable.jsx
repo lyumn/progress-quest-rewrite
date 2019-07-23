@@ -1,20 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import GameTable from '../shared/GameTable'
-
+import React from 'react';
+import PropTypes from 'prop-types';
+import GameTable from '../shared/GameTable';
 
 const COLUMNS = [
   {
     property: 'trait',
-    label: 'Trait',
+    label: 'Trait'
   },
   {
     property: 'value',
-    label: 'Value',
-  },
+    label: 'Value'
+  }
 ];
 
-const TraitsTable = (props) => {
+const TraitsTable = props => {
   const data = Object.keys(props.traits).map(function(key) {
     return {
       trait: key,
@@ -22,13 +21,11 @@ const TraitsTable = (props) => {
     };
   });
 
-  return (
-    <GameTable data={data} columns={COLUMNS} hasHeader={true} />
-  )
+  return <GameTable data={data} columns={COLUMNS} hasHeader />;
 };
 
 TraitsTable.propTypes = {
   // width: PropTypes.string.isRequired,
-}
+};
 
 export default TraitsTable;

@@ -18,7 +18,7 @@ const PlotDevelopmentContainer = ({ plotDevelopment, plotProgress }) => (
 
 const mapStateToProps = state => ({
   plotDevelopment: getPlotDevelopment(state),
-  plotProgress: getPosition(state),
+  plotProgress: getPosition(state)
 });
 
 export default connect(

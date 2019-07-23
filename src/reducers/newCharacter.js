@@ -1,9 +1,9 @@
-import {Alea} from '../utils/random'
-import {save} from '../utils/storage'
+import { Alea } from '../utils/random';
+import { save } from '../utils/storage';
 
 // const initialState = {
 //   characterSheet:{
-//    "Traits":{  
+//    "Traits":{
 //      "Name":"Brovdrub",
 //      "Race":"Crested Dwarf",
 //      "Class":"Mage Illusioner",
@@ -11,10 +11,9 @@ import {save} from '../utils/storage'
 //   }
 // }
 
-export const getTraits = (state) =>
- state.characterSheet["Traits"]
+export const getTraits = state => state.characterSheet['Traits'];
 
-const seed = Alea()
+const seed = Alea();
 
 //  var stats = {};
 // var traits = {};
@@ -49,36 +48,34 @@ const seed = Alea()
 //    $("#Unroll").attr("disabled", !seedHistory.length);
 //  }
 
-
 //  var seed = new Alea();
 
 // function randseed(set) {
 //   return seed.state(set);
 // }
 
-export const getTotal = (state) =>
-  state.characterSheet['Traits']
+export const getTotal = state => state.characterSheet['Traits'];
 
 function Random(n) {
   return seed.uint32() % n;
 }
 
 function rollStat(stat) {
-  // stats[stat] = 
+  // stats[stat] =
   // // if (document)
   // //   $("#"+stat).text(stats[stat]);
-  return (3 + Random(6) + Random(6) + Random(6));
+  return 3 + Random(6) + Random(6) + Random(6);
 }
 
-var stats = {};
-var traits = {};
-var total = 0;
-var seedHistory = [];
+let stats = {};
+let traits = {};
+let total = 0;
+let seedHistory = [];
 
 const roll = () => {
   stats.seed = seed.state();
   total = 0;
-  var best = -1;
+  let best = -1;
 
   window.K.PrimeStats.forEach(_e => {
     total += rollStat(this);
@@ -91,34 +88,37 @@ const roll = () => {
   stats['HP Max'] = Random(8) + stats.CON.div(6);
   stats['MP Max'] = Random(8) + stats.INT.div(6);
 
-  var color =
-    (total >= (63+18)) ? 'red'    :
-    (total > (4 * 18)) ? 'yellow' :
-    (total <= (63-18)) ? 'grey'   :
-    (total < (3 * 18)) ? 'silver' :
-    'white';
-  
-    // if (document) {
-    //   var Total = $("#Total");
-    //   Total.text(total);
-    //   Total.css("background-color", color);
-  
-    //   $("#Unroll").attr("disabled", !seedHistory.length);
-    // }
-}
+  let color =
+    total >= 63 + 18
+      ? 'red'
+      : total > 4 * 18
+      ? 'yellow'
+      : total <= 63 - 18
+      ? 'grey'
+      : total < 3 * 18
+      ? 'silver'
+      : 'white';
+
+  // if (document) {
+  //   var Total = $("#Total");
+  //   Total.text(total);
+  //   Total.css("background-color", color);
+
+  //   $("#Unroll").attr("disabled", !seedHistory.length);
+  // }
+};
 
 // const sold
 
-export const sold = (state) => {
-  return () => save(state)
-}
-
+export const sold = state => {
+  return () => save(state);
+};
 
 const newCharacter = (state = {}, action) => {
- switch (action.type) {
-   default:
-     return state
- }
-}
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
 
-export default newCharacter
+export default newCharacter;

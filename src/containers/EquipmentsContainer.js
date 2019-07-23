@@ -14,7 +14,7 @@ const EquipmentContainer = ({ equipments }) => <Equipments data={equipments} />;
 // }
 
 const mapStateToProps = state => ({
-  equipments: getEquipments(state),
+  equipments: getEquipments(state)
 });
 
 export default connect(

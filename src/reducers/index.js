@@ -1,17 +1,18 @@
-import { combineReducers } from 'redux'
-import inventory from './inventory'
-import characterSheet from './characterSheet'
-import equipments from './equipments'
-import plotDevelopment from './plotDevelopment'
-import quests from './quests'
-import spellBook from './spellBook'
-import status from './status'
-import seed from './seed'
-import encumbranceBar from './bars/encumbranceBar'
-import experienceBar from './bars/experienceBar'
-import plotBar from './bars/plotBar'
-import questBar from './bars/questBar'
-import taskBar from './bars/taskBar'
+import { combineReducers } from 'redux';
+import inventory from './inventory';
+import characterSheet from './characterSheet';
+import equipments from './equipments';
+import plotDevelopment from './plotDevelopment';
+import quests from './quests';
+import spellBook from './spellBook';
+import status from './status';
+import seed from './seed';
+import main from './main';
+import encumbranceBar from './bars/encumbranceBar';
+import experienceBar from './bars/experienceBar';
+import plotBar from './bars/plotBar';
+import questBar from './bars/questBar';
+import taskBar from './bars/taskBar';
 
 export default combineReducers({
   inventory,
@@ -28,4 +29,5 @@ export default combineReducers({
   plotBar,
   questBar,
   taskBar,
-})
+  main
+});

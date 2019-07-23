@@ -1,26 +1,25 @@
 const initialState = [
   {
     name: 'Gold',
-    quantity: 19,
+    quantity: 19
   },
   {
     name: 'Harpy Mascra',
-    quantity: 1,
-  },
-]
+    quantity: 1
+  }
+];
 
-export const getInventory = (state) =>
-  state.inventory
+export const getInventory = state => state.inventory;
 
 const inventory = (state = initialState, action) => {
   switch (action.type) {
     case '1':
-      return initialState
+      return initialState;
     case 'LOAD_GAME':
-        return state
+      return state;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default inventory
+export default inventory;

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "delay": "^4.3.0",
     "grommet": "^2.7.1",
     "lodash": "^4.17.14",
     "polished": "^3.4.1",
@@ -26,7 +27,19 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "airbnb-base",
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": 1
+    }
   },
   "browserslist": {
     "production": [
@@ -41,6 +54,12 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
     "prettier": "1.18.2",
     "react-dev-utils": "^9.0.1"
   }

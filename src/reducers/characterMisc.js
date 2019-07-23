@@ -1,29 +1,18 @@
-import {Alea} from '../utils/random'
+import { Alea } from '../utils/random';
 
 const initialState = {
-  "dna":[  
-    0.06654448481276631,
-    0.3819211523514241,
-    0.7914541012141854,
-    200298
- ],
- "seed":[  
-    0.9569065496325493,
-    0.07272393722087145,
-    0.5347971464507282,
-    1890335
- ]
-  ,
- "birthday":"Sun Jun 30 2019 11:21:14 GMT-0400 (Eastern Daylight Time)",
- "birthstamp":1561908074765,
- "saveName":"Brovdrub",
-}
+  dna: [0.06654448481276631, 0.3819211523514241, 0.7914541012141854, 200298],
+  seed: [0.9569065496325493, 0.07272393722087145, 0.5347971464507282, 1890335],
+  birthday: 'Sun Jun 30 2019 11:21:14 GMT-0400 (Eastern Daylight Time)',
+  birthstamp: 1561908074765,
+  saveName: 'Brovdrub'
+};
 
 const characterSheet = (state = initialState, action) => {
   switch (action.type) {
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default characterMisc
+export default characterMisc;

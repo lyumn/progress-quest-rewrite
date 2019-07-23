@@ -1,21 +1,19 @@
 import React from 'react';
-import BoxWithTitle from '../shared/BoxWithTitle';
 import { Box, Button, Grommet, Grid } from 'grommet';
+import BoxWithTitle from '../shared/BoxWithTitle';
 
 const StatsGeneration = props => {
   // debugger;
   return (
-    <BoxWithTitle title='Stats'>
+    <BoxWithTitle title="Stats">
+      <div>{JSON.stringify(props.stats).toString()}</div>
       <div>
-        {JSON.stringify(props.stats).toString()}
+        <Button label="Roll" onClick={props.onRoll} />
       </div>
       <div>
-        <Button label='Roll' onClick={props.onRoll} />
-      </div>
-      <div>
-        <Button label='Sold' onClick={props.onSold} />
+        <Button label="Sold" onClick={props.onSold} />
       </div>
     </BoxWithTitle>
   );
-}
+};
 export default StatsGeneration;

@@ -1,10 +1,11 @@
 // TODO: use gameProgress instead?
 const initialState = {
+  // task: '',
   position: '0%'
 }
 
 export const getPosition = (state) =>
- state.position
+ state.taskBar.position
 
 const taskBar = (state = initialState, action) => {
  switch (action.type) {

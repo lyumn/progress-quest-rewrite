@@ -65,18 +65,6 @@ const initialState = [
       "Hydrophobia",
       "I"
    ],
-   [  
-      "Holy Batpole",
-      "I"
-   ],
-   [  
-      "Braingate",
-      "I"
-   ],
-   [  
-      "Clever Fellow",
-      "I"
-   ]
 ]
 
 export const getSpellBook = (state) =>

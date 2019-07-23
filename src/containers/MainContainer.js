@@ -7,6 +7,7 @@ import EquipmentsContainer from './EquipmentsContainer';
 import PlotDevelopmentContainer from './PlotDevelopmentContainer';
 import QuestsContainer from './QuestsContainer';
 import SpellBookContainer from './SpellBookContainer';
+import TaskBarContainer from './TaskBarContainer';
 import { useState, useEffect } from 'react';
 
 const MainContainer = props => {
@@ -40,7 +41,9 @@ const MainContainer = props => {
       <SpellBookContainer gridArea="spell-book" background="accent-1" />
       <InventoryContainer gridArea="inventory" />
       <QuestsContainer gridArea="quests" background="accent-1" />
-      <Box gridArea="status" background="accent-1" />
+      <Box gridArea="status">
+      <TaskBarContainer />
+        </Box>
     </Grid>
   );
 };

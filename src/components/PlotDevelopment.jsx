@@ -7,7 +7,7 @@ import ProgressBar from './shared/ProgressBar';
 const range = (start, end) => {
   const length = end - start + 1;
   return Array.from({ length }, (_, i) => start + i);
-};
+}; // use _.takeRight(arr, 5);
 
 const PlotDevelopment = props => (
   <Grid

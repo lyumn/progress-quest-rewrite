@@ -16,6 +16,10 @@ const LOOT = 'LOOT';
 const BUY = 'BUY';
 const SELL_ONE = 'SELL_ONE';
 
+const CHOOSE_CLASS = 'CHOOSE_CLASS';
+const CHOOSE_RACE = 'CHOOSE_RACE';
+const UPDATE_NAME = 'UPDATE_NAME';
+
 export const generateName = () => ({
   type: GENERATE_NAME
 });
@@ -82,4 +86,19 @@ export const buy = (equipType, value, price) => ({
 export const sellOne = price => ({
   type: SELL_ONE,
   price
+});
+
+export const chooseClass = value => ({
+  type: CHOOSE_CLASS,
+  value
+});
+
+export const chooseRace = value => ({
+  type: CHOOSE_RACE,
+  value
+});
+
+export const updateName = value => ({
+  type: UPDATE_NAME,
+  value
 });

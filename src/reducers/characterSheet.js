@@ -76,6 +76,27 @@ const levelUp = state => {
   return newState;
 };
 
+const chooseClass = (state, value) => {
+  const newState = { ...state };
+  newState.Traits.Class = value;
+
+  return newState;
+};
+
+const chooseRace = (state, value) => {
+  const newState = { ...state };
+  newState.Traits.Race = value;
+
+  return newState;
+};
+
+const updateName = (state, value) => {
+  const newState = { ...state };
+  newState.Traits.Name = value;
+
+  return newState;
+};
+
 const characterSheet = (state = initialState, action) => {
   switch (action.type) {
     case 'ROLL':
@@ -90,6 +111,12 @@ const characterSheet = (state = initialState, action) => {
       return { ...state, data };
     case 'LEVEL_UP':
       return levelUp(state);
+    case 'CHOOSE_CLASS':
+      return chooseClass(state, action.value);
+    case 'CHOOSE_RACE':
+      return chooseRace(state, action.value);
+    case 'UPDATE_NAME':
+      return updateName(state, action.value);
     default:
       return state;
   }

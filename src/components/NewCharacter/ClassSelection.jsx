@@ -14,7 +14,7 @@ const ClassSelection = props => {
               name="prop"
               checked={props.selected === label}
               label={label}
-              onChange={() => {}}
+              onChange={() => props.onSelect(label)}
             />
           </Box>
         );

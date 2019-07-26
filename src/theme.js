@@ -1,48 +1,48 @@
-const theme = {  
-  dark:true,
-  "global":{  
-     "colors":{  
-        "brand":"#773421",
-        "accent-1": "#efac28",
-        "accent-2": "#7fffd4",
-        dark: "#2a1d0d",
-        text: {
-          light:'#1f240a',
-          dark:'#efd8a1'
-        }
-     },
-    //  "input":{  
-    //     "border":{  
+const theme = {
+  dark: true,
+  global: {
+    colors: {
+      brand: '#773421',
+      'accent-1': '#efac28',
+      'accent-2': '#7fffd4',
+      dark: '#2a1d0d',
+      text: {
+        light: '#1f240a',
+        dark: '#efd8a1'
+      }
+    },
+    //  "input":{
+    //     "border":{
     //        "radius":"4px"
     //     }
     //  },
-     font: {
+    font: {
       // family: "'Bahianita', cursive",
       family: "'Metal Mania', cursive;",
       size: '12px',
-      height: '20px',
+      height: '20px'
     }
   },
-    radioButton: {
-    size: '15px',
-  },
+  radioButton: {
+    size: '15px'
+  }
 
-  // "button":{  
-  //    "border":{  
+  // "button":{
+  //    "border":{
   //       "radius":"4px"
   //    }
   // },
-  // "checkBox":{  
-  //    "border":{  
+  // "checkBox":{
+  //    "border":{
   //       "radius":"4px"
   //    }
   // },
-  // "layer":{  
-  //    "border":{  
+  // "layer":{
+  //    "border":{
   //       "radius":"4px"
   //    }
   // }
-}
+};
 
 // const theme = {
 //   global: {

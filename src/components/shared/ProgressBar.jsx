@@ -4,14 +4,14 @@ import theme from '../../theme';
 
 const styles = {
   container: {
-    border: '3px solid',
+    border: '4px solid',
     borderRadius: '10px',
     borderColor: theme.global.colors['accent-1']
   },
   progress: {
     backgroundColor: theme.global.colors['accent-2'],
     width: '0%',
-    height: '10px',
+    height: '11px',
     border: '0px solid #7fffd4',
     borderRadius: '3px'
   }
@@ -20,7 +20,7 @@ const styles = {
 // TODO text on the progress bar
 const ProgressBar = ({ width }) => (
   <div style={styles.container}>
-    <div style={{ ...styles.progress, width: width }} />
+    <div style={{ ...styles.progress, width }} />
   </div>
 );
 

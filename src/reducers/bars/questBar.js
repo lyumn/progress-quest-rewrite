@@ -1,7 +1,7 @@
 // TODO: use gameProgress instead?
 const initialState = {
   position: 0,
-  total: 20
+  total: 1
 };
 
 export const getPosition = state =>

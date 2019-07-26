@@ -1,6 +1,6 @@
 export const getMain = state => state;
 
-const isEncumbranceFull = state => state.encumbranceBar.position >= 20;
+const isEncumbranceFull = state => state.encumbranceBar.position >= 12;
 
 const isExperienceBarFull = state => state.experienceBar.position >= state.experienceBar.total;
 
@@ -26,6 +26,8 @@ const nextEquipmentPrice = state =>
 const currentMonsterLoot = state =>
   `${state.taskBar.monster.name.toLowerCase()} ${state.taskBar.monster.loot}`;
 
+const nextLevelUpTime = state => 20 * getLevel(state) * 60;
+
 export const helpers = {
   isEncumbranceFull,
   isExperienceBarFull,
@@ -37,7 +39,8 @@ export const helpers = {
   isInventoryEmpty,
   nextEquipmentPrice,
   getGold,
-  currentMonsterLoot
+  currentMonsterLoot,
+  nextLevelUpTime
 };
 
 const main = (state = {}, action) => {

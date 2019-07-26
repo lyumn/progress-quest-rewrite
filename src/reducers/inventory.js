@@ -30,7 +30,7 @@ const pay = (state, price) => {
 
 const sellOne = (state, price) => {
   const newState = [...state];
-  newState[0].quantity = newState[0].quantity - price;
+  newState[0].quantity = newState[0].quantity + price;
   // var amt = GetI(Inventory, 1) * GetI(Traits,'Level');
   // if (Pos(' of ', Inventory.label(1)) > 0)
   //   amt *= (1+RandomLow(10)) * (1+RandomLow(GetI(Traits,'Level')));

@@ -28,8 +28,9 @@ export const loadGame = () => ({
   type: LOAD_GAME
 });
 
-export const levelUp = () => ({
-  type: LEVEL_UP
+export const levelUp = total => ({
+  type: LEVEL_UP,
+  total
 });
 
 export const completeQuest = () => ({

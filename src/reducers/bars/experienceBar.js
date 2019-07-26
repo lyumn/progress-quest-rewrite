@@ -1,7 +1,8 @@
 // TODO: use gameProgress instead?
 const initialState = {
   position: 0,
-  total: 1000
+  // total: 1000
+  total: 10
 };
 
 export const getPosition = state =>
@@ -14,9 +15,10 @@ export const increment = (state, value) => {
   return newState;
 };
 
-const levelUp = state => {
+const levelUp = (state, total) => {
   const newState = { ...state };
   newState.position = 0;
+  newState.total = total;
 
   return newState;
 };
@@ -28,7 +30,7 @@ const experienceBar = (state = initialState, action) => {
     case 'LOAD_GAME':
       return state;
     case 'LEVEL_UP':
-      return levelUp(state);
+      return levelUp(state, action.total);
     case 'INCREMENT_EXPERIENCE':
       return increment(state, action.value);
     default:

@@ -18,14 +18,19 @@ const completeQuest = state => {
   switch (random.int(0, 4)) {
     case 0:
       nextQuest = `Exterminate ${window.K.Monsters[random.int(0, window.K.Monsters.length - 1)]}`;
+      break;
     case 1:
       nextQuest = `Seek ${InterestingItem()}`;
+      break;
     case 2:
       nextQuest = `Deliver this ${BoringItem()}`;
+      break;
     case 3:
       nextQuest = `Fetch me ${BoringItem()}`;
+      break;
     case 4:
-      nextQuest = `Placate ${window.K.Monsters[random.int(0, window.K.Monsters.length - 1)]}`;
+      nextQuest = `Placate ${window.K.Monsters[random.int(0, window.K.Monsters.length - 1)].name}`;
+      break;
   }
 
   const newState = [...state];

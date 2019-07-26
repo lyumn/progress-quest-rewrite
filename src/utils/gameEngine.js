@@ -4,7 +4,8 @@ import Humanize from 'humanize-plus';
 import { odds, pick, SpecialItem, InterestingItem, BoringItem } from './randomHelpers.js';
 // make this a reducer
 const delayedCall = async action => {
-  await delay(50);
+  // await delay(50);
+  await delay(10);
   action();
 };
 
@@ -98,7 +99,7 @@ function Special(m, s) {
 }
 
 function monsterTask(level) {
-  const definite = false;
+  let definite = false;
   let i;
   for (i = level; i >= 1; --i) {
     if (odds(2, 5)) level += random.int(1, 2) * 2 - 1;
@@ -106,19 +107,26 @@ function monsterTask(level) {
   if (level < 1) level = 1;
   // level = level of puissance of opponent(s) we'll return
 
-  let monster;
+  let monster = {
+    name: null,
+    level: null,
+    loot: null
+  };
   let lev;
   if (odds(1, 25)) {
     // Use an NPC every once in a while
-    monster = ` ${pick(window.K.Races).split('|')[0]}`;
+    monster.name = `${pick(window.K.Races).split('|')[0]}`;
+    monster.level = parseInt(pick(window.K.Races).split('|')[1]);
+    monster.loot = `${pick(window.K.Races).split('|')[2]}`;
     if (odds(1, 2)) {
-      monster = `passing ${monster} ${pick(window.K.Klasses).split('|')[0]}`;
+      monster.name = `passing ${monster} ${pick(window.K.Klasses).split('|')[0]}`;
+      // level and loot?
     } else {
-      monster = `${pick(window.K.Titles)} ${generateName()} the ${monster}`;
+      monster.name = `${pick(window.K.Titles)} ${generateName()} the ${monster}`;
       definite = true;
     }
     lev = level;
-    monster = `${monster}|${level}|*`;
+    monster.name = `${monster}|${level}|*`;
   } else if ('game.questmonster' && odds(1, 4)) {
     // todo quest monster
     // Use the quest monster
@@ -205,7 +213,7 @@ const completeTask = (
     const equips = WinEquip();
     buy(equips.type, equips.name, nextEquipmentPrice(data));
   } else if (taskType == 'market' || taskType == 'sell') {
-    if (taskType == 'sell') {
+    if (!isInventoryEmpty(data) && taskType == 'sell') {
       let amt = data.inventory[1].quantity * data.characterSheet.Traits.Level;
 
       if (data.inventory[1].name.includes(' of ')) {
@@ -213,33 +221,37 @@ const completeTask = (
       }
       sellOne(amt);
     }
+
     if (!isInventoryEmpty(data)) {
       nextTask(`Selling ${data.inventory[1].name}`, 'sell');
+      return 0;
     }
   }
   if (isEncumbranceFull(data)) {
     nextTask(`Heading to market to sell loot`, 'market');
-  } else if (
+    return 0;
+  }
+  if (
     taskType != 'kill' &&
     taskType != 'heading'
     // (Pos('kill|', old) <= 0) && (old != 'heading')
   ) {
     if (getGold(data) > nextEquipmentPrice(data)) {
       nextTask(`Negotiating purchase of better equipment`, 'buying');
-    } else {
-      nextTask(`Heading to the killing fields`, 'heading');
+      return 0;
     }
-  } else {
-    const result = monsterTask(data.characterSheet.Traits.Level);
-    nextTask(`Executing ${result.text}`, 'kill', result.monster);
-    // debugger;
-
-    //     var nn = GetI(Traits, 'Level');
-    //     var t = MonsterTask(nn);
-    //     var InventoryLabelAlsoGameStyleTag = 3;
-    //     nn = Math.floor((2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn);
-    //     Task('Executing ' + t.description, nn);
+    nextTask(`Heading to the killing fields`, 'heading');
+    return 0;
   }
+  const result = monsterTask(data.characterSheet.Traits.Level);
+  nextTask(`Executing ${result.text}`, 'kill', result.monster);
+  // debugger;
+
+  //     var nn = GetI(Traits, 'Level');
+  //     var t = MonsterTask(nn);
+  //     var InventoryLabelAlsoGameStyleTag = 3;
+  //     nn = Math.floor((2 * InventoryLabelAlsoGameStyleTag * t.level * 1000) / nn);
+  //     Task('Executing ' + t.description, nn);
 };
 
 const start = async ({
@@ -265,26 +277,28 @@ const start = async ({
     isTaskBarFull,
     currentTaskType,
     currentTaskMonster,
-    isInventoryEmpty
+    isInventoryEmpty,
+    nextLevelUpTime
   } = helpers;
 
   if (isTaskBarFull(data)) {
     if (isExperienceBarFull(data)) {
-      levelUp();
+      levelUp(nextLevelUpTime(data));
     } else {
       incrementExperience(10);
     }
+    if (currentTaskType(data) == 'kill' || currentTaskType(data) == 'heading') {
+      if (isQuestBarFull(data)) {
+        completeQuest();
+      } else {
+        incrementQuest(1);
+      }
 
-    if (isQuestBarFull(data)) {
-      completeQuest();
-    } else {
-      incrementQuest(1);
-    }
-
-    if (isPlotBarFull(data)) {
-      completePlot();
-    } else {
-      incrementPlot(1);
+      if (isPlotBarFull(data)) {
+        completePlot();
+      } else {
+        incrementPlot(1);
+      }
     }
 
     completeTask(data, nextTask, loot, buy, sellOne, helpers);

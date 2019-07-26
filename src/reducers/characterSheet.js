@@ -71,7 +71,7 @@ const levelUp = state => {
   const randStat1 = STAT_NAMES[random.int(0, STAT_NAMES.length - 1)];
   const randStat2 = STAT_NAMES[random.int(0, STAT_NAMES.length - 1)];
   newState.Stats[randStat1] += random.int(0, 3);
-  newState.Stats[randStat1] += random.int(0, 3);
+  newState.Stats[randStat2] += random.int(0, 3);
 
   return newState;
 };

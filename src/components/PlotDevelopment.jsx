@@ -1,7 +1,13 @@
 import React from 'react';
-import { Box, Grid } from 'grommet';
+import { Box, Grid, CheckBox } from 'grommet';
+import romanize from 'romanize';
 import BoxWithTitle from './shared/BoxWithTitle';
 import ProgressBar from './shared/ProgressBar';
+
+const range = (start, end) => {
+  const length = end - start + 1;
+  return Array.from({ length }, (_, i) => start + i);
+};
 
 const PlotDevelopment = props => (
   <Grid
@@ -14,7 +20,14 @@ const PlotDevelopment = props => (
     gap="small"
   >
     <BoxWithTitle gridArea="table" title="Plot Development">
-      {JSON.stringify(props.data).toString()}
+      <CheckBox checked label="Prologue" style={{ margin: '2px 0px' }} />
+      {range(1, props.data.Act).map(e => (
+        <CheckBox
+          checked={e != props.data.Act}
+          label={`Act ${romanize(e)}`}
+          style={{ margin: '2px 0px' }}
+        />
+      ))}
     </BoxWithTitle>
     <Box gridArea="tracking">
       <ProgressBar width={props.plotProgress} />

@@ -1,9 +1,31 @@
 // From http://baagoe.com/en/RandomMusings/javascript/
 // Johannes BaagÃ¸e <baagoe@baagoe.com>, 2010
+import random from 'random';
+
+export const SpecialItem = () => {
+  return `${InterestingItem()} of ${window.K.ItemOfs[random.int(0, window.K.ItemOfs.length - 1)]}`;
+};
+
+export const InterestingItem = () => {
+  return `${window.K.ItemAttrib[random.int(0, window.K.ItemAttrib.length - 1)]} ${
+    window.K.Specials[random.int(0, window.K.Specials.length - 1)]
+  }`;
+};
+
+export const BoringItem = () => {
+  return window.K.BoringItems[random.int(0, window.K.BoringItems.length - 1)];
+};
+
+export const odds = (chance, outof) => {
+  return random.int(0, outof) < chance;
+};
+
+export const pick = arr => arr[random.int(0, arr.length - 1)];
+
 function Mash() {
   let n = 0xefc8249d;
 
-  let mash = function(data) {
+  const mash = function(data) {
     data = data.toString();
     for (let i = 0; i < data.length; i++) {
       n += data.charCodeAt(i);
@@ -55,8 +77,8 @@ export function Alea() {
     }
     mash = null;
 
-    let random = function() {
-      let t = 2091639 * s0 + c * 2.3283064365386963e-10; // 2^-32
+    const random = function() {
+      const t = 2091639 * s0 + c * 2.3283064365386963e-10; // 2^-32
       s0 = s1;
       s1 = s2;
       return (s2 = t - (c = t | 0));

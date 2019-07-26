@@ -1,4 +1,4 @@
-import { Alea } from '../utils/random';
+import { Alea } from '../utils/randomHelpers';
 import { save } from '../utils/storage';
 
 // const initialState = {
@@ -11,7 +11,7 @@ import { save } from '../utils/storage';
 //   }
 // }
 
-export const getTraits = state => state.characterSheet['Traits'];
+export const getTraits = state => state.characterSheet.Traits;
 
 const seed = Alea();
 
@@ -54,7 +54,7 @@ const seed = Alea();
 //   return seed.state(set);
 // }
 
-export const getTotal = state => state.characterSheet['Traits'];
+export const getTotal = state => state.characterSheet.Traits;
 
 function Random(n) {
   return seed.uint32() % n;
@@ -67,10 +67,10 @@ function rollStat(stat) {
   return 3 + Random(6) + Random(6) + Random(6);
 }
 
-let stats = {};
-let traits = {};
+const stats = {};
+const traits = {};
 let total = 0;
-let seedHistory = [];
+const seedHistory = [];
 
 const roll = () => {
   stats.seed = seed.state();
@@ -88,7 +88,7 @@ const roll = () => {
   stats['HP Max'] = Random(8) + stats.CON.div(6);
   stats['MP Max'] = Random(8) + stats.INT.div(6);
 
-  let color =
+  const color =
     total >= 63 + 18
       ? 'red'
       : total > 4 * 18

@@ -7,8 +7,6 @@ const initialState = {
 export const getPosition = state =>
   `${(state.plotBar.position / state.plotBar.total).toFixed(2) * 100}%`;
 
-export const isPlotBarFull = state => state.plotBar.position >= state.plotBar.total;
-
 export const increment = (state, value) => {
   const newState = { ...state };
   newState.position += value;

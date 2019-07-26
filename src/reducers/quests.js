@@ -1,5 +1,6 @@
 // import { completeQuest } from "../actions";
 import random from 'random';
+import { SpecialItem, InterestingItem, BoringItem } from '../utils/randomHelpers';
 
 const initialState = [
   'Seek the Astral Lens',
@@ -10,18 +11,6 @@ const initialState = [
 ];
 
 export const getQuests = state => state.quests;
-
-function SpecialItem() {
-  return `${InterestingItem()  } of ${  window.K.ItemOfs[random.int(0, window.K.ItemOfs.length - 1)]}`;
-}
-
-function InterestingItem() {
-  return (`${window.K.ItemAttrib[random.int(0, window.K.ItemAttrib.length - 1)]  } ${  window.K.Specials[random.int(0, window.K.Specials.length - 1)]}`)
-}
-
-function BoringItem() {
-  return window.K.BoringItems[random.int(0, window.K.BoringItems.length - 1)];
-}
 
 const completeQuest = state => {
   let nextQuest;

@@ -1,4 +1,4 @@
-import { Alea } from '../utils/random';
+import { Alea } from '../utils/randomHelpers';
 
 const initialState = {
   dna: [0.06654448481276631, 0.3819211523514241, 0.7914541012141854, 200298],

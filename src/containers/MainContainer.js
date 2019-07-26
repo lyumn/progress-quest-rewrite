@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
-import { Box, Button, Grommet, Grid } from 'grommet';
+import { Box, Grid } from 'grommet';
 import { connect } from 'react-redux';
-import delay from 'delay';
 import CharacterSheetContainer from './CharacterSheetContainer';
 import InventoryContainer from './InventoryContainer';
 import EquipmentsContainer from './EquipmentsContainer';
@@ -10,24 +9,22 @@ import PlotDevelopmentContainer from './PlotDevelopmentContainer';
 import QuestsContainer from './QuestsContainer';
 import SpellBookContainer from './SpellBookContainer';
 import TaskBarContainer from './TaskBarContainer';
-import { getMain } from '../reducers/main';
+import { getMain, helpers } from '../reducers/main';
 
-import { start } from '../utils/gameEngine';
+import start from '../utils/gameEngine';
 import {
   incrementTask,
   levelUp,
   completeQuest,
   completePlot,
-  completeTask,
+  nextTask,
   incrementExperience,
   incrementQuest,
-  incrementPlot
+  incrementPlot,
+  loot,
+  buy,
+  sellOne
 } from '../actions';
-import { isEncumbranceFull } from '../reducers/bars/encumbranceBar';
-import { isExperienceBarFull } from '../reducers/bars/experienceBar';
-import { isPlotBarFull } from '../reducers/bars/plotBar';
-import { isQuestBarFull } from '../reducers/bars/questBar';
-import { isTaskBarFull } from '../reducers/bars/taskBar';
 
 // const incrementTaskBar = async () => {
 //   await delay(50);
@@ -83,11 +80,7 @@ const MainContainer = props => {
 
 const mapStateToProps = state => ({
   data: getMain(state),
-  isEncumbranceFull: isEncumbranceFull(state),
-  isExperienceBarFull: isExperienceBarFull(state),
-  isPlotBarFull: isPlotBarFull(state),
-  isQuestBarFull: isQuestBarFull(state),
-  isTaskBarFull: isTaskBarFull(state)
+  helpers
 });
 
 export default connect(
@@ -97,9 +90,12 @@ export default connect(
     levelUp,
     completeQuest,
     completePlot,
-    completeTask,
+    nextTask,
     incrementExperience,
     incrementQuest,
-    incrementPlot
+    incrementPlot,
+    loot,
+    buy,
+    sellOne
   }
 )(MainContainer);

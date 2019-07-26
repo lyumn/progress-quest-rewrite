@@ -1,4 +1,4 @@
-import { Alea } from '../utils/random';
+import { Alea } from '../utils/randomHelpers';
 
 const initialState = {
   seed: Alea()

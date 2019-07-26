@@ -11,7 +11,10 @@ const INCREMENT_TASK = 'INCREMENT_TASK';
 const INCREMENT_EXPERIENCE = 'INCREMENT_EXPERIENCE';
 const INCREMENT_QUEST = 'INCREMENT_QUEST';
 const INCREMENT_PLOT = 'INCREMENT_PLOT';
-const COMPLETE_TASK = 'COMPLETE_TASK';
+const NEXT_TASK = 'NEXT_TASK';
+const LOOT = 'LOOT';
+const BUY = 'BUY';
+const SELL_ONE = 'SELL_ONE';
 
 export const generateName = () => ({
   type: GENERATE_NAME
@@ -37,8 +40,11 @@ export const completePlot = () => ({
   type: COMPLETE_PLOT
 });
 
-export const completeTask = () => ({
-  type: COMPLETE_TASK
+export const nextTask = (text, taskType, monster) => ({
+  type: NEXT_TASK,
+  text,
+  taskType,
+  monster
 });
 
 export const incrementTask = () => ({
@@ -58,4 +64,21 @@ export const incrementQuest = value => ({
 export const incrementPlot = value => ({
   type: INCREMENT_PLOT,
   value
+});
+
+export const loot = value => ({
+  type: LOOT,
+  value
+});
+
+export const buy = (equipType, value, price) => ({
+  type: BUY,
+  equipType,
+  value,
+  price
+});
+
+export const sellOne = price => ({
+  type: SELL_ONE,
+  price
 });

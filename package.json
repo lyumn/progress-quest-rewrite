@@ -6,6 +6,7 @@
     "@babel/runtime": "^7.5.5",
     "delay": "^4.3.0",
     "grommet": "^2.7.1",
+    "humanize-plus": "^1.8.2",
     "lodash": "^4.17.14",
     "polished": "^3.4.1",
     "random": "^2.1.1",

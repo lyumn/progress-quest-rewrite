@@ -7,9 +7,6 @@ const initialState = {
 export const getPosition = state =>
   `${(state.experienceBar.position / state.experienceBar.total).toFixed(2) * 100}%`;
 
-export const isExperienceBarFull = state =>
-  state.experienceBar.position >= state.experienceBar.total;
-
 export const increment = (state, value) => {
   const newState = { ...state };
   newState.position += value;

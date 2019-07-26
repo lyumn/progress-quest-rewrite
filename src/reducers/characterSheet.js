@@ -1,6 +1,6 @@
-import random from 'random'
-import { Alea } from '../utils/random'
-import { generateName } from '../utils/generation'
+import random from 'random';
+import { Alea } from '../utils/randomHelpers';
+import { generateName } from '../utils/generation';
 import CharacterSheet from '../components/CharacterSheet';
 
 const initialState = {
@@ -28,15 +28,15 @@ const STAT_NAMES = ['STR', 'CON', 'DEX', 'INT', 'WIS', 'CHA'];
 
 export const getCharacterSheet = state => state.characterSheet;
 
-export const getTraits = state => state.characterSheet['Traits'];
+export const getTraits = state => state.characterSheet.Traits;
 
-export const getStats = state => state.characterSheet['Stats'];
+export const getStats = state => state.characterSheet.Stats;
 
 const seed = Alea();
 
-export const getTotal = state => state.characterSheet['Traits'];
+export const getTotal = state => state.characterSheet.Traits;
 
-export const getBest = state => state.characterSheet['Traits'];
+export const getBest = state => state.characterSheet.Traits;
 
 function Random(n) {
   return seed.uint32() % n;
@@ -83,7 +83,7 @@ const characterSheet = (state = initialState, action) => {
       return { ...state, Stats: { ...stats } };
     case 'GENERATE_NAME':
       const Name = generateName(seed);
-      return { ...state, Traits: { ...state['Traits'], Name } };
+      return { ...state, Traits: { ...state.Traits, Name } };
     case 'LOAD_GAME':
       let data;
       // const data = load([state['Traits']['Name'], ['CharacterSheet'])

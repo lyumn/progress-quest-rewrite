@@ -7,8 +7,6 @@ const initialState = {
 export const getPosition = state =>
   `${(state.questBar.position / state.questBar.total).toFixed(2) * 100}%`;
 
-export const isQuestBarFull = state => state.questBar.position >= state.questBar.total;
-
 export const increment = (state, value) => {
   const newState = { ...state };
   newState.position += value;

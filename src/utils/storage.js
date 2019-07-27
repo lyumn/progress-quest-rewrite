@@ -8,7 +8,12 @@ const KEYS = [
   'quests',
   'spellBook',
   'status',
-  'seed'
+  'taskBar',
+  'encumbranceBar',
+  'experienceBar',
+  'plotBar',
+  'questBar'
+  // 'seed'
 ];
 
 const getNestedObject = (nestedObj, pathArr) => {
@@ -20,10 +25,11 @@ const getNestedObject = (nestedObj, pathArr) => {
 
 export const save = data => {
   const saveName = data.characterSheet.Traits.Name;
-  const saveData = {};
-  saveData[saveName] = _.pick(data, ...KEYS);
-
-  window.localStorage.setItem('roster', JSON.stringify(saveData));
+  // const saveData = {};
+  // saveData[saveName] = _.pick(data, ...KEYS);
+  const roster = JSON.parse(window.localStorage.getItem('roster'));
+  roster[saveName] = _.pick(data, ...KEYS);
+  window.localStorage.setItem('roster', JSON.stringify(roster)); // change this
 };
 
 export const load = keys => {

@@ -111,7 +111,10 @@ const roll = () => {
 // const sold
 
 export const sold = state => {
-  return () => save(state);
+  return () => {
+    save(state);
+    window.location.href = `/game/${state.characterSheet.Traits.Name}`;
+  };
 };
 
 const newCharacter = (state = {}, action) => {

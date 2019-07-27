@@ -1,4 +1,5 @@
 import random from 'random';
+import { load } from '../utils/storage';
 
 const initialState = [
   // ['Lockjaw', 'V'],
@@ -28,12 +29,20 @@ const levelUp = state => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.spellBook;
+
+  return newState;
+};
+
 const spellBook = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'LEVEL_UP':
       return levelUp(state);
     default:

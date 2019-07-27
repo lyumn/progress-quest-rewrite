@@ -1,3 +1,5 @@
+import { load } from '../../utils/storage';
+
 // TODO: use gameProgress instead?
 const initialState = {
   position: 0,
@@ -23,12 +25,20 @@ const levelUp = (state, total) => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.experienceBar;
+
+  return newState;
+};
+
 const experienceBar = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'LEVEL_UP':
       return levelUp(state, action.total);
     case 'INCREMENT_EXPERIENCE':

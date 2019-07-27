@@ -1,6 +1,7 @@
 // import { completeQuest } from "../actions";
 import random from 'random';
 import { SpecialItem, InterestingItem, BoringItem } from '../utils/randomHelpers';
+import { load } from '../utils/storage';
 
 const initialState = [
   // 'Seek the Astral Lens',
@@ -11,6 +12,14 @@ const initialState = [
 ];
 
 export const getQuests = state => state.quests;
+
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.quests;
+
+  return newState;
+};
 
 const completeQuest = state => {
   let nextQuest;
@@ -44,7 +53,7 @@ const quests = (state = initialState, action) => {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'COMPLETE_QUEST':
       return completeQuest(state);
     default:

@@ -1,3 +1,5 @@
+import { load } from '../../utils/storage';
+
 // TODO: use gameProgress instead?
 const initialState = {
   position: 0,
@@ -14,12 +16,20 @@ export const increment = (state, value) => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.questBar;
+
+  return newState;
+};
+
 const questBar = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'INCREMENT_QUEST':
       return increment(state, action.value);
     default:

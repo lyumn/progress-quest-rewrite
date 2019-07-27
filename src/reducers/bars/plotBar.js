@@ -1,4 +1,6 @@
 // TODO: use gameProgress instead?
+import { load } from '../../utils/storage';
+
 const initialState = {
   position: 0,
   total: 20
@@ -14,12 +16,20 @@ export const increment = (state, value) => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.plotBar;
+
+  return newState;
+};
+
 const plotBar = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'INCREMENT_PLOT':
       return increment(state, action.value);
     default:

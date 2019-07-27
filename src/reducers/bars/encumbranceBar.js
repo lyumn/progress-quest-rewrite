@@ -1,3 +1,5 @@
+import { load } from '../../utils/storage';
+
 // TODO: use gameProgress instead?
 const TOTAL = 12;
 
@@ -20,12 +22,20 @@ const decrease = state => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.encumbranceBar;
+
+  return newState;
+};
+
 const encumbranceBar = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'LOOT':
       return increase(state, action.value);
     case 'SELL_ONE':

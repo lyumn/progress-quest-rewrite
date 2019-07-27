@@ -1,8 +1,10 @@
+import { load } from '../utils/storage';
+
 const initialState = {
-  Weapon: '',
+  Weapon: 'Stick',
   Shield: '',
   Helm: '',
-  Hauberk: '',
+  Hauberk: 'Burlap',
   Brassairts: '',
   Vambraces: '',
   Gauntlets: '',
@@ -20,12 +22,20 @@ const buy = (state, type, name) => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.equipments;
+
+  return newState;
+};
+
 const equipments = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'BUY':
       return buy(state, action.equipType, action.value);
     default:

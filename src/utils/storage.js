@@ -27,7 +27,10 @@ export const save = data => {
   const saveName = data.characterSheet.Traits.Name;
   // const saveData = {};
   // saveData[saveName] = _.pick(data, ...KEYS);
-  const roster = JSON.parse(window.localStorage.getItem('roster'));
+  let roster = JSON.parse(window.localStorage.getItem('roster'));
+  if (!roster) {
+    roster = {};
+  }
   roster[saveName] = _.pick(data, ...KEYS);
   window.localStorage.setItem('roster', JSON.stringify(roster)); // change this
 };

@@ -1,3 +1,5 @@
+import { load } from '../../utils/storage';
+
 // TODO: use gameProgress instead?
 import { SpecialItem, InterestingItem, BoringItem } from '../../utils/randomHelpers';
 import encumbranceBar from './encumbranceBar';
@@ -55,12 +57,20 @@ const nextTask = (state, text, taskType, monster) => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.taskBar;
+
+  return newState;
+};
+
 const taskBar = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'INCREMENT_TASK':
       return incrementTask(state);
     case 'NEXT_TASK':

@@ -1,3 +1,5 @@
+import { load } from '../utils/storage';
+
 const initialState = [
   {
     name: 'Gold',
@@ -40,12 +42,20 @@ const sellOne = (state, price) => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.inventory;
+
+  return newState;
+};
+
 const inventory = (state = initialState, action) => {
   switch (action.type) {
     case '1':
       return initialState;
     case 'LOAD_GAME':
-      return state;
+      return loadGame(state);
     case 'LOOT':
       return loot(state, action.value);
     case 'BUY':

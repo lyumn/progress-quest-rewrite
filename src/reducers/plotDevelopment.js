@@ -1,5 +1,5 @@
 const initialState = {
-  Act: 2
+  Act: 1
 };
 
 export const getPlotDevelopment = state => state.plotDevelopment;

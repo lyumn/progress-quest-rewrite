@@ -2,25 +2,46 @@ import random from 'random';
 import { Alea } from '../utils/randomHelpers';
 import { generateName } from '../utils/generation';
 import CharacterSheet from '../components/CharacterSheet';
+import { load } from '../utils/storage';
+
+// const initialState = {
+//   Traits: {
+//     Name: 'Brovdrub',
+//     Race: 'Crested Dwarf',
+//     Class: 'Mage Illusioner',
+//     Level: 8
+//   },
+//   Stats: {
+//     seed: [0.06654448481276631, 0.3819211523514241, 0.7914541012141854, 200298],
+//     STR: 20,
+//     // "best":"WIS",
+//     CON: 13,
+//     DEX: 15,
+//     INT: 20,
+//     WIS: 19,
+//     CHA: 12,
+//     'HP Max': 51,
+//     'MP Max': 74
+//   }
+// };
 
 const initialState = {
   Traits: {
-    Name: 'Brovdrub',
-    Race: 'Crested Dwarf',
-    Class: 'Mage Illusioner',
-    Level: 8
+    Name: '',
+    Race: '',
+    Class: '',
+    Level: 1
   },
   Stats: {
-    seed: [0.06654448481276631, 0.3819211523514241, 0.7914541012141854, 200298],
-    STR: 20,
+    STR: 0,
     // "best":"WIS",
-    CON: 13,
-    DEX: 15,
-    INT: 20,
-    WIS: 19,
-    CHA: 12,
-    'HP Max': 51,
-    'MP Max': 74
+    CON: 0,
+    DEX: 0,
+    INT: 0,
+    WIS: 0,
+    CHA: 0,
+    'HP Max': 0,
+    'MP Max': 0
   }
 };
 
@@ -97,6 +118,14 @@ const updateName = (state, value) => {
   return newState;
 };
 
+const loadGame = state => {
+  let newState = { ...state };
+  const data = load();
+  newState = data.characterSheet;
+
+  return newState;
+};
+
 const characterSheet = (state = initialState, action) => {
   switch (action.type) {
     case 'ROLL':
@@ -106,9 +135,7 @@ const characterSheet = (state = initialState, action) => {
       const Name = generateName(seed);
       return { ...state, Traits: { ...state.Traits, Name } };
     case 'LOAD_GAME':
-      let data;
-      // const data = load([state['Traits']['Name'], ['CharacterSheet'])
-      return { ...state, data };
+      return loadGame(state);
     case 'LEVEL_UP':
       return levelUp(state);
     case 'CHOOSE_CLASS':

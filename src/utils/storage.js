@@ -16,12 +16,12 @@ const KEYS = [
   // 'seed'
 ];
 
-const getNestedObject = (nestedObj, pathArr) => {
-  return pathArr.reduce(
-    (obj, key) => (obj && obj[key] !== 'undefined' ? obj[key] : undefined),
-    nestedObj
-  );
-};
+// const getNestedObject = (nestedObj, pathArr) => {
+//   return pathArr.reduce(
+//     (obj, key) => (obj && obj[key] !== 'undefined' ? obj[key] : undefined),
+//     nestedObj
+//   );
+// };
 
 export const save = data => {
   const saveName = data.characterSheet.Traits.Name;
@@ -32,7 +32,8 @@ export const save = data => {
   window.localStorage.setItem('roster', JSON.stringify(roster)); // change this
 };
 
-export const load = keys => {
-  const data = window.localStorage.getItem('roster');
-  return getNestedObject(data, keys);
+export const load = () => {
+  const name = window.location.href.split('/').pop();
+  const data = JSON.parse(window.localStorage.getItem('roster'));
+  return data[name];
 };

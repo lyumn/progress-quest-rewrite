@@ -3,11 +3,11 @@ import random from 'random';
 import { SpecialItem, InterestingItem, BoringItem } from '../utils/randomHelpers';
 
 const initialState = [
-  'Seek the Astral Lens',
-  'Deliver this planter box',
-  'Seek the Grandiose Lens',
-  'Placate the Zombies',
-  'Deliver this anvil'
+  // 'Seek the Astral Lens',
+  // 'Deliver this planter box',
+  // 'Seek the Grandiose Lens',
+  // 'Placate the Zombies',
+  // 'Deliver this anvil'
 ];
 
 export const getQuests = state => state.quests;

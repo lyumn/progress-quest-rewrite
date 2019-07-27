@@ -1,12 +1,12 @@
 const initialState = [
   {
     name: 'Gold',
-    quantity: 19
-  },
-  {
-    name: 'Harpy Mascra',
-    quantity: 1
+    quantity: 10
   }
+  // {
+  //   name: 'Harpy Mascra',
+  //   quantity: 1
+  // }
 ];
 
 export const getInventory = state => state.inventory;

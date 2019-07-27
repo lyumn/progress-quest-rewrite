@@ -13,6 +13,7 @@ import { getMain, helpers } from '../reducers/main';
 
 import start from '../utils/gameEngine';
 import {
+  loadGame,
   incrementTask,
   levelUp,
   completeQuest,
@@ -42,6 +43,9 @@ import {
 
 const MainContainer = props => {
   useEffect(() => {
+    if (!props.data.characterSheet.Traits.Name) {
+      props.loadGame();
+    }
     start(props);
   });
 
@@ -86,6 +90,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
+    loadGame,
     incrementTask,
     levelUp,
     completeQuest,

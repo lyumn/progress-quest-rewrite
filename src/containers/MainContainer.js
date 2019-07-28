@@ -11,7 +11,7 @@ import SpellBookContainer from './SpellBookContainer';
 import TaskBarContainer from './TaskBarContainer';
 import { getMain, helpers } from '../reducers/helpers/main';
 
-import start from '../utils/gameEngine';
+import start from '../gameEngine';
 import {
   loadGame,
   incrementTask,

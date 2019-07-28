@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Box, Button, Grommet, Grid } from 'grommet';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Box, Grommet } from 'grommet';
 import MainContainer from './MainContainer';
 import NewCharacterContainer from './NewCharacterContainer';
 import theme from '../theme';
 
-const App = props => (
+const App = () => (
+  // eslint-disable-next-line react/jsx-filename-extension
   <Grommet theme={theme}>
     <Box background="dark">
       <Router>

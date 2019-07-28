@@ -1,5 +1,11 @@
+body {
+  zoom: 70%;
+  background-color: #2a1d0d;
+}
+
 .App {
   text-align: center;
+  zoom: 70%;
 }
 
 .App-logo {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableFooter, TableHeader, TableRow, Text } from 'grommet';
+import PropTypes from 'prop-types';
 import BoxWithTitle from './shared/BoxWithTitle';
 import GameTable from './shared/GameTable';
 
@@ -12,27 +12,37 @@ const COLUMNS = [
   }
 ];
 
-const EquipmentTable = props => {
-  const data = Object.keys(props.equipments).map(function(key) {
-    return {
-      category: key,
-      name: props.equipments[key]
-    };
-  });
+const EquipmentTable = ({ equipments }) => {
+  const data = Object.keys(equipments).map(key => ({
+    category: key,
+    name: equipments[key]
+  }));
+
   return <GameTable data={data} columns={COLUMNS} hasHeader={false} />;
 };
 
-const Equipments = props => (
+const Equipments = ({ data }) => (
   <BoxWithTitle gridArea="table" title="Equipments">
-    <EquipmentTable equipments={props.data} />
+    <EquipmentTable equipments={data} />
   </BoxWithTitle>
 );
 
-// Inventory.propTypes = {
-//   data: PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     quantity: PropTypes.number.isRequired,
-//   }).isRequired,
-// }
+EquipmentTable.propTypes = {
+  equipments: PropTypes.shape({
+    Weapon: PropTypes.string.isRequired,
+    Shield: PropTypes.string.isRequired,
+    Helm: PropTypes.string.isRequired,
+    Hauberk: PropTypes.string.isRequired,
+    Brassairts: PropTypes.string.isRequired,
+    Vambraces: PropTypes.string.isRequired,
+    Gauntlets: PropTypes.string.isRequired,
+    Gambeson: PropTypes.string.isRequired,
+    Cuisses: PropTypes.string.isRequired,
+    Greaves: PropTypes.string.isRequired,
+    Sollerets: PropTypes.string.isRequired
+  }).isRequired
+};
+
+Equipments.propTypes = { data: PropTypes.isRequired };
 
 export default Equipments;

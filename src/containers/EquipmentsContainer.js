@@ -6,18 +6,24 @@ import Equipments from '../components/Equipments';
 
 const EquipmentContainer = ({ equipments }) => <Equipments data={equipments} />;
 
-// InventoryContainer.propTypes = {
-//   inventory: PropTypes.arrayOf(PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     quantity: PropTypes.number.isRequired,
-//   })).isRequired,
-// }
+EquipmentContainer.propTypes = {
+  equipments: PropTypes.shape({
+    Weapon: PropTypes.string.isRequired,
+    Shield: PropTypes.string.isRequired,
+    Helm: PropTypes.string.isRequired,
+    Hauberk: PropTypes.string.isRequired,
+    Brassairts: PropTypes.string.isRequired,
+    Vambraces: PropTypes.string.isRequired,
+    Gauntlets: PropTypes.string.isRequired,
+    Gambeson: PropTypes.string.isRequired,
+    Cuisses: PropTypes.string.isRequired,
+    Greaves: PropTypes.string.isRequired,
+    Sollerets: PropTypes.string.isRequired
+  }).isRequired
+};
 
 const mapStateToProps = state => ({
   equipments: getEquipments(state)
 });
 
-export default connect(
-  mapStateToProps
-  // { checkout }
-)(EquipmentContainer);
+export default connect(mapStateToProps)(EquipmentContainer);

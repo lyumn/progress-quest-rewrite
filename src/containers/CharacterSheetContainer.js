@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCharacterSheet } from '../reducers/characterSheet';
 import { getPosition } from '../reducers/bars/experienceBar';
-import CharacterSheet from '../components/CharacterSheet';
+import CharacterSheet from '../components/CharacterSheet/index';
 
 const CharacterSheetContainer = ({ characterSheet, experience }) => (
+  // eslint-disable-next-line react/jsx-filename-extension
   <CharacterSheet characterSheet={characterSheet} experience={experience} />
 );
 
@@ -28,7 +29,8 @@ CharacterSheetContainer.propTypes = {
       Name: PropTypes.string.isRequired,
       Race: PropTypes.string.isRequired
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  experience: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid, Box } from 'grommet';
-import BoxWithTitle from './shared/BoxWithTitle';
-import TraitsTable from './CharacterSheet/TraitsTable';
-import StatsTable from './CharacterSheet/StatsTable';
-import ExperienceBar from './CharacterSheet/ExperienceBar';
+import BoxWithTitle from '../shared/BoxWithTitle';
+import TraitsTable from './TraitsTable';
+import StatsTable from './StatsTable';
+import ExperienceBar from './ExperienceBar';
 
 const CharacterSheet = props => (
   <Grid

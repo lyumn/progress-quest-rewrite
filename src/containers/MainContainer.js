@@ -9,7 +9,7 @@ import PlotDevelopmentContainer from './PlotDevelopmentContainer';
 import QuestsContainer from './QuestsContainer';
 import SpellBookContainer from './SpellBookContainer';
 import TaskBarContainer from './TaskBarContainer';
-import { getMain, helpers } from '../reducers/main';
+import { getMain, helpers } from '../reducers/helpers/main';
 
 import start from '../utils/gameEngine';
 import {

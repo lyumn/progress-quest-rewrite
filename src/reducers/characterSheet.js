@@ -1,6 +1,6 @@
 import random from 'random';
-import { generateName } from '../utils/randomHelpers';
-import { load } from '../utils/storage';
+import { generateName, rollAllStats } from '../utils/randomHelpers';
+import { loadGame } from './concerns/loadStorage';
 
 const initialState = {
   Traits: {
@@ -30,29 +30,19 @@ export const getTraits = state => state.characterSheet.Traits;
 
 export const getStats = state => state.characterSheet.Stats;
 
-export const getTotal = state => state.characterSheet.Traits;
+const roll = state => {
+  const newState = { ...state };
 
-export const getBest = state => state.characterSheet.Traits;
+  newState.Stats = rollAllStats(newState.Stats);
+  newState.Stats['HP Max'] = random.int(1, 8) + newState.Stats.CON.div(6);
+  newState.Stats['MP Max'] = random.int(1, 8) + newState.Stats.INT.div(6);
 
-function rollStat() {
-  return 3 + random.int(1, 6) + random.int(1, 6) + random.int(1, 6);
-}
-
-const roll = () => {
-  const stats = {};
-
-  window.K.PrimeStats.forEach(e => {
-    stats[e] = rollStat(e);
-  });
-
-  stats['HP Max'] = random.int(1, 8) + stats.CON.div(6);
-  stats['MP Max'] = random.int(1, 8) + stats.INT.div(6);
-
-  return stats;
+  return newState;
 };
 
 const levelUp = state => {
-  const newState = { Traits: { ...state.Traits }, Stats: { ...state.Stats } };
+  // TODO revisit immutablity here
+  const newState = { ...state };
   newState.Traits.Level += 1;
   newState.Stats['HP Max'] += newState.Stats.CON.div(3) + 1 + random.int(0, 4);
   newState.Stats['MP Max'] += newState.Stats.INT.div(3) + 1 + random.int(0, 4);
@@ -65,44 +55,25 @@ const levelUp = state => {
 };
 
 const chooseClass = (state, value) => {
-  const newState = { ...state };
-  newState.Traits.Class = value;
-
-  return newState;
+  return { ...state, Traits: { ...state.Traits, Class: value } };
 };
 
 const chooseRace = (state, value) => {
-  const newState = { ...state };
-  newState.Traits.Race = value;
-
-  return newState;
+  return { ...state, Traits: { ...state.Traits, Race: value } };
 };
 
 const updateName = (state, value) => {
-  const newState = { ...state };
-  newState.Traits.Name = value;
-
-  return newState;
-};
-
-const loadGame = state => {
-  let newState = { ...state };
-  const data = load();
-  newState = data.characterSheet;
-
-  return newState;
+  return { ...state, Traits: { ...state.Traits, Name: value } };
 };
 
 const characterSheet = (state = initialState, action) => {
   switch (action.type) {
     case 'ROLL':
-      const stats = roll();
-      return { ...state, Stats: { ...stats } };
+      return roll(state);
     case 'GENERATE_NAME':
-      const Name = generateName();
-      return { ...state, Traits: { ...state.Traits, Name } };
+      return updateName(state, generateName());
     case 'LOAD_GAME':
-      return loadGame(state);
+      return loadGame(state, 'characterSheet');
     case 'LEVEL_UP':
       return levelUp(state);
     case 'CHOOSE_CLASS':

@@ -26,8 +26,6 @@ const nextTask = (state, text, taskType, monster) => {
 
 const taskBar = (state = initialState, action) => {
   switch (action.type) {
-    case '1':
-      return initialState;
     case 'LOAD_GAME':
       return loadGame(state, 'taskBar');
     case 'INCREMENT_TASK':

@@ -1,4 +1,4 @@
-import { load } from '../utils/storage';
+import { loadGame } from './concerns/loadStorage';
 
 const initialState = [
   {
@@ -21,37 +21,22 @@ const loot = (state, name) => {
 
 const pay = (state, price) => {
   const newState = [...state];
-  newState[0].quantity = newState[0].quantity - price;
+  newState[0].quantity -= price;
 
   return newState;
 };
 
 const sellOne = (state, price) => {
   const newState = [...state];
-  newState[0].quantity = newState[0].quantity + price;
-  // var amt = GetI(Inventory, 1) * GetI(Traits,'Level');
-  // if (Pos(' of ', Inventory.label(1)) > 0)
-  //   amt *= (1+RandomLow(10)) * (1+RandomLow(GetI(Traits,'Level')));
-  // Inventory.remove1();
-  // Add(Inventory, 'Gold', amt);
-  newState.splice(1, 1);
-  return newState;
-};
-
-const loadGame = state => {
-  let newState = { ...state };
-  const data = load();
-  newState = data.inventory;
-
+  newState[0].quantity += price;
+  newState.splice(1, 1); // TODO remove splice
   return newState;
 };
 
 const inventory = (state = initialState, action) => {
   switch (action.type) {
-    case '1':
-      return initialState;
     case 'LOAD_GAME':
-      return loadGame(state);
+      return loadGame(state, 'inventory');
     case 'LOOT':
       return loot(state, action.value);
     case 'BUY':

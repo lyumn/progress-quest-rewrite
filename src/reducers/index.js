@@ -5,7 +5,6 @@ import equipments from './equipments';
 import plotDevelopment from './plotDevelopment';
 import quests from './quests';
 import spellBook from './spellBook';
-import main from './main';
 import encumbranceBar from './bars/encumbranceBar';
 import experienceBar from './bars/experienceBar';
 import plotBar from './bars/plotBar';
@@ -16,7 +15,6 @@ export default combineReducers({
   inventory,
   characterSheet,
   equipments,
-  inventory,
   plotDevelopment,
   quests,
   spellBook,
@@ -24,6 +22,5 @@ export default combineReducers({
   experienceBar,
   plotBar,
   questBar,
-  taskBar,
-  main
+  taskBar
 });

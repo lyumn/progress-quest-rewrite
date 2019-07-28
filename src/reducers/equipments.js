@@ -1,4 +1,4 @@
-import { load } from '../utils/storage';
+import { loadGame } from './concerns/loadStorage';
 
 const initialState = {
   Weapon: 'Stick',
@@ -22,20 +22,10 @@ const buy = (state, type, name) => {
   return newState;
 };
 
-const loadGame = state => {
-  let newState = { ...state };
-  const data = load();
-  newState = data.equipments;
-
-  return newState;
-};
-
 const equipments = (state = initialState, action) => {
   switch (action.type) {
-    case '1':
-      return initialState;
     case 'LOAD_GAME':
-      return loadGame(state);
+      return loadGame(state, 'equipments');
     case 'BUY':
       return buy(state, action.equipType, action.value);
     default:

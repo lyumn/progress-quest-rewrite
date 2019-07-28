@@ -9,7 +9,7 @@ export const SpecialItem = () => {
 export const InterestingItem = () => {
   return `${window.K.ItemAttrib[random.int(0, window.K.ItemAttrib.length - 1)]} ${
     window.K.Specials[random.int(0, window.K.Specials.length - 1)]
-    }`;
+  }`;
 };
 
 export const BoringItem = () => {
@@ -32,4 +32,50 @@ export function generateName() {
   let result = '';
   for (let i = 0; i <= 5; ++i) result += pick(KParts[i % 3]);
   return result.charAt(0).toUpperCase() + result.slice(1);
+}
+
+function rollStat() {
+  return 3 + random.int(1, 6) + random.int(1, 6) + random.int(1, 6);
+}
+
+export function rollAllStats(stats) {
+  const retVal = { ...stats };
+  window.K.PrimeStats.forEach(e => {
+    retVal[e] = rollStat(e);
+  });
+
+  return retVal;
+}
+
+export function randomQuest() {
+  let quest;
+  switch (random.int(0, 4)) {
+    case 0:
+      // eslint-disable-next-line no-undef
+      quest = `Exterminate ${window.K.Monsters[random.int(0, window.K.Monsters.length - 1)]}`;
+      break;
+    case 1:
+      quest = `Seek ${InterestingItem()}`;
+      break;
+    case 2:
+      quest = `Deliver this ${BoringItem()}`;
+      break;
+    case 3:
+      quest = `Fetch me ${BoringItem()}`;
+      break;
+    case 4:
+      // eslint-disable-next-line no-undef
+      quest = `Placate ${window.K.Monsters[random.int(0, window.K.Monsters.length - 1)].name}`;
+      break;
+    default:
+      quest = '';
+      break;
+  }
+
+  return quest;
+}
+
+export function randomSpellBook() {
+  // eslint-disable-next-line no-undef
+  return [window.K.Spells[random.int(0, window.K.Spells.length - 1)], 'I'];
 }

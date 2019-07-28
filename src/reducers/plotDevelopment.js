@@ -1,4 +1,4 @@
-import { load } from '../utils/storage';
+import { loadGame } from './concerns/loadStorage';
 
 const initialState = {
   Act: 1
@@ -13,20 +13,10 @@ const completeAct = state => {
   return newState;
 };
 
-const loadGame = state => {
-  let newState = { ...state };
-  const data = load();
-  newState = data.plotDevelopment;
-
-  return newState;
-};
-
 const plotDevelopment = (state = initialState, action) => {
   switch (action.type) {
-    case '1':
-      return initialState;
     case 'LOAD_GAME':
-      return loadGame(state);
+      return loadGame(state, 'plotDevelopment');
     case 'COMPLETE_ACT':
       return completeAct(state);
     default:

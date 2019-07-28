@@ -5,8 +5,6 @@ import equipments from './equipments';
 import plotDevelopment from './plotDevelopment';
 import quests from './quests';
 import spellBook from './spellBook';
-import status from './status';
-import seed from './seed';
 import main from './main';
 import encumbranceBar from './bars/encumbranceBar';
 import experienceBar from './bars/experienceBar';
@@ -22,8 +20,6 @@ export default combineReducers({
   plotDevelopment,
   quests,
   spellBook,
-  status,
-  seed,
   encumbranceBar,
   experienceBar,
   plotBar,

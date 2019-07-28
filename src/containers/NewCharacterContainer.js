@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import BoxWithTitle from '../components/shared/BoxWithTitle';
 import { sold } from '../reducers/newCharacter';
 import { getTraits, getStats } from '../reducers/characterSheet';
-import { getSeed } from '../reducers/seed';
 import StatsGeneration from '../components/NewCharacter/StatsGeneration';
 import NameGeneration from '../components/NewCharacter/NameGeneration';
 import RaceSelection from '../components/NewCharacter/RaceSelection';
@@ -62,7 +61,6 @@ const NewCharacterContainer = ({
 const mapStateToProps = state => ({
   traits: getTraits(state),
   stats: getStats(state),
-  seed: getSeed(state),
   sold: sold(state)
 });
 

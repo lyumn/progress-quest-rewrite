@@ -1,35 +1,27 @@
-// TODO: use gameProgress instead?
-import { load } from '../../utils/storage';
+import { humanizePosition, increment } from '../concerns/bars';
+import { loadGame } from '../concerns/loadStorage';
 
 const initialState = {
   position: 0,
-  total: 20
+  total: 21600
 };
 
 export const getPosition = state =>
-  `${(state.plotBar.position / state.plotBar.total).toFixed(2) * 100}%`;
+  humanizePosition(state.encumbranceBar.position, state.encumbranceBar.total);
 
-export const increment = (state, value) => {
+const completeAct = state => {
   const newState = { ...state };
-  newState.position += value;
-
-  return newState;
-};
-
-const loadGame = state => {
-  let newState = { ...state };
-  const data = load();
-  newState = data.plotBar;
+  newState.total = 60 * 60 * (1 + 5 * state.Act);
 
   return newState;
 };
 
 const plotBar = (state = initialState, action) => {
   switch (action.type) {
-    case '1':
-      return initialState;
     case 'LOAD_GAME':
-      return loadGame(state);
+      return loadGame(state, 'plotBar');
+    case 'COMPLETE_ACT':
+      return completeAct(state);
     case 'INCREMENT_PLOT':
       return increment(state, action.value);
     default:

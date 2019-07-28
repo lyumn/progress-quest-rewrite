@@ -2,10 +2,12 @@ import delay from 'delay';
 import random from 'random';
 import Humanize from 'humanize-plus';
 import { odds, pick, SpecialItem, InterestingItem, BoringItem } from './randomHelpers.js';
+import { save } from './storage';
+
 // make this a reducer
 const delayedCall = async action => {
-  // await delay(50);
-  await delay(10);
+  await delay(50);
+  // await delay(10);
   action();
 };
 
@@ -209,7 +211,7 @@ const completeTask = (
     } else {
       loot(currentMonsterLoot(data));
     }
-  } else if (taskType == 'buy') {
+  } else if (taskType == 'buying') {
     const equips = WinEquip();
     buy(equips.type, equips.name, nextEquipmentPrice(data));
   } else if (taskType == 'market' || taskType == 'sell') {
@@ -222,8 +224,8 @@ const completeTask = (
       sellOne(amt);
     }
 
-    if (!isInventoryEmpty(data)) {
-      nextTask(`Selling ${data.inventory[1].name}`, 'sell');
+    if (data.inventory.length > 2) {
+      nextTask(`Selling ${data.inventory[2].name}`, 'sell');
       return 0;
     }
   }
@@ -284,11 +286,11 @@ const start = async ({
   if (isTaskBarFull(data)) {
     if (isExperienceBarFull(data)) {
       levelUp(nextLevelUpTime(data));
-    } else {
-      incrementExperience(10);
+    } else if (currentTaskType(data) == 'kill') {
+      incrementExperience(1);
     }
     if (currentTaskType(data) == 'kill' || currentTaskType(data) == 'heading') {
-      if (isQuestBarFull(data)) {
+      if (isQuestBarFull(data) || data.quests.length == 0) {
         completeQuest();
       } else {
         incrementQuest(1);
@@ -305,6 +307,7 @@ const start = async ({
   } else {
     delayedCall(incrementTask);
   }
+  save(data);
 };
 
 export default start;

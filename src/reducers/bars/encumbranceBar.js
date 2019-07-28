@@ -1,45 +1,22 @@
-import { load } from '../../utils/storage';
+import { humanizePosition, increment } from '../concerns/bars';
+import { loadGame } from '../concerns/loadStorage';
 
-// TODO: use gameProgress instead?
 const TOTAL = 12;
 
 const initialState = {
   position: 0
 };
 
-export const getPosition = state => `${(state.encumbranceBar.position / TOTAL).toFixed(2) * 100}%`;
-
-const increase = state => {
-  const newState = { ...state };
-  newState.position += 1;
-
-  return newState;
-};
-const decrease = state => {
-  const newState = { ...state };
-  newState.position -= 1;
-
-  return newState;
-};
-
-const loadGame = state => {
-  let newState = { ...state };
-  const data = load();
-  newState = data.encumbranceBar;
-
-  return newState;
-};
+export const getPosition = state => humanizePosition(state.encumbranceBar.position, TOTAL);
 
 const encumbranceBar = (state = initialState, action) => {
   switch (action.type) {
-    case '1':
-      return initialState;
     case 'LOAD_GAME':
-      return loadGame(state);
+      return loadGame(state, 'encumbranceBar');
     case 'LOOT':
-      return increase(state, action.value);
+      return increment(state, 1);
     case 'SELL_ONE':
-      return decrease(state, action.price);
+      return increment(state, -1);
     default:
       return state;
   }

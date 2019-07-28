@@ -1,6 +1,6 @@
-import { load } from '../../utils/storage';
+import { humanizePosition, increment } from '../concerns/bars';
+import { loadGame } from '../concerns/loadStorage';
 
-// TODO: use gameProgress instead?
 const initialState = {
   position: 0,
   // total: 1000
@@ -8,14 +8,7 @@ const initialState = {
 };
 
 export const getPosition = state =>
-  `${(state.experienceBar.position / state.experienceBar.total).toFixed(2) * 100}%`;
-
-export const increment = (state, value) => {
-  const newState = { ...state };
-  newState.position += value;
-
-  return newState;
-};
+  humanizePosition(state.experienceBar.position, state.experienceBar.total);
 
 const levelUp = (state, total) => {
   const newState = { ...state };
@@ -25,20 +18,10 @@ const levelUp = (state, total) => {
   return newState;
 };
 
-const loadGame = state => {
-  let newState = { ...state };
-  const data = load();
-  newState = data.experienceBar;
-
-  return newState;
-};
-
 const experienceBar = (state = initialState, action) => {
   switch (action.type) {
-    case '1':
-      return initialState;
     case 'LOAD_GAME':
-      return loadGame(state);
+      return loadGame(state, 'experienceBar');
     case 'LEVEL_UP':
       return levelUp(state, action.total);
     case 'INCREMENT_EXPERIENCE':

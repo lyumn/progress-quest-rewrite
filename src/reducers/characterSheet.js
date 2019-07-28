@@ -1,29 +1,6 @@
 import random from 'random';
-import { Alea } from '../utils/randomHelpers';
-import { generateName } from '../utils/generation';
-import CharacterSheet from '../components/CharacterSheet';
+import { generateName } from '../utils/randomHelpers';
 import { load } from '../utils/storage';
-
-// const initialState = {
-//   Traits: {
-//     Name: 'Brovdrub',
-//     Race: 'Crested Dwarf',
-//     Class: 'Mage Illusioner',
-//     Level: 8
-//   },
-//   Stats: {
-//     seed: [0.06654448481276631, 0.3819211523514241, 0.7914541012141854, 200298],
-//     STR: 20,
-//     // "best":"WIS",
-//     CON: 13,
-//     DEX: 15,
-//     INT: 20,
-//     WIS: 19,
-//     CHA: 12,
-//     'HP Max': 51,
-//     'MP Max': 74
-//   }
-// };
 
 const initialState = {
   Traits: {
@@ -53,33 +30,23 @@ export const getTraits = state => state.characterSheet.Traits;
 
 export const getStats = state => state.characterSheet.Stats;
 
-const seed = Alea();
-
 export const getTotal = state => state.characterSheet.Traits;
 
 export const getBest = state => state.characterSheet.Traits;
 
-function Random(n) {
-  return seed.uint32() % n;
-}
-
-function rollStat(stat) {
-  // stats[stat] =
-  // // if (document)
-  // //   $("#"+stat).text(stats[stat]);
-  return 3 + Random(6) + Random(6) + Random(6);
+function rollStat() {
+  return 3 + random.int(1, 6) + random.int(1, 6) + random.int(1, 6);
 }
 
 const roll = () => {
   const stats = {};
-  stats.seed = seed.state();
 
   window.K.PrimeStats.forEach(e => {
     stats[e] = rollStat(e);
   });
 
-  stats['HP Max'] = Random(8) + stats.CON.div(6);
-  stats['MP Max'] = Random(8) + stats.INT.div(6);
+  stats['HP Max'] = random.int(1, 8) + stats.CON.div(6);
+  stats['MP Max'] = random.int(1, 8) + stats.INT.div(6);
 
   return stats;
 };
@@ -132,7 +99,7 @@ const characterSheet = (state = initialState, action) => {
       const stats = roll();
       return { ...state, Stats: { ...stats } };
     case 'GENERATE_NAME':
-      const Name = generateName(seed);
+      const Name = generateName();
       return { ...state, Traits: { ...state.Traits, Name } };
     case 'LOAD_GAME':
       return loadGame(state);

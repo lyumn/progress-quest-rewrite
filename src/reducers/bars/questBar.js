@@ -1,37 +1,30 @@
-import { load } from '../../utils/storage';
+import random from 'random';
+import { humanizePosition, increment } from '../concerns/bars';
+import { loadGame } from '../concerns/loadStorage';
 
-// TODO: use gameProgress instead?
 const initialState = {
   position: 0,
-  total: 500
+  total: 100
 };
 
-export const getPosition = state =>
-  `${(state.questBar.position / state.questBar.total).toFixed(2) * 100}%`;
+export const getPosition = state => humanizePosition(state.questBar.position, state.questBar.total);
 
-export const increment = (state, value) => {
+const completeQuest = state => {
   const newState = { ...state };
-  newState.position += value;
-
-  return newState;
-};
-
-const loadGame = state => {
-  let newState = { ...state };
-  const data = load();
-  newState = data.questBar;
+  newState.position = 0;
+  newState.total = 50 + random.int(1, 1000);
 
   return newState;
 };
 
 const questBar = (state = initialState, action) => {
   switch (action.type) {
-    case '1':
-      return initialState;
     case 'LOAD_GAME':
-      return loadGame(state);
+      return loadGame(state, 'questBar');
     case 'INCREMENT_QUEST':
       return increment(state, action.value);
+    case 'COMPLETE_QUEST':
+      return completeQuest(state);
     default:
       return state;
   }

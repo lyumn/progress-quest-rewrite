@@ -3,8 +3,7 @@ import { loadGame } from '../concerns/loadStorage';
 
 const initialState = {
   position: 0,
-  // total: 1000
-  total: 10
+  total: 50
 };
 
 export const getPosition = state =>

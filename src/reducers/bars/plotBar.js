@@ -6,8 +6,7 @@ const initialState = {
   total: 21600
 };
 
-export const getPosition = state =>
-  humanizePosition(state.encumbranceBar.position, state.encumbranceBar.total);
+export const getPosition = state => humanizePosition(state.plotBar.position, state.plotBar.total);
 
 const completeAct = state => {
   const newState = { ...state };

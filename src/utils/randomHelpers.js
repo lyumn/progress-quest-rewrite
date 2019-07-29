@@ -51,7 +51,7 @@ export function randomQuest() {
   switch (random.int(0, 4)) {
     case 0:
       // eslint-disable-next-line no-undef
-      quest = `Exterminate ${window.K.Monsters[random.int(0, window.K.Monsters.length - 1)]}`;
+      quest = `Exterminate ${window.K.Monsters[random.int(0, window.K.Monsters.length - 1)].name}`;
       break;
     case 1:
       quest = `Seek ${InterestingItem()}`;
@@ -111,8 +111,10 @@ export function randomEquip() {
   const name = stuff[random.int(0, stuff.length - 1)];
   let modifier;
   if (random.int(0, 4) == 0) {
+    // debugger;
     modifier = worse[random.int(0, worse.length - 1)];
   } else {
+    // debugger;
     modifier = worse[random.int(0, better.length - 1)];
   }
   return {
@@ -176,6 +178,7 @@ export function randomeMonsterTask(level) {
     monster.name = `${pick(window.K.Races).split('|')[0]}`;
     monster.level = parseInt(pick(window.K.Races).split('|')[1]);
     monster.loot = `${pick(window.K.Races).split('|')[2]}`;
+    // debugger;
     if (odds(1, 2)) {
       monster.name = `passing ${monster} ${pick(window.K.Klasses).split('|')[0]}`;
       // level and loot?

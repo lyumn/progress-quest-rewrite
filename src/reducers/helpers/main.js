@@ -1,12 +1,12 @@
 export const getMain = state => state;
 
-const isEncumbranceFull = state => state.encumbranceBar.position >= 12;
+const isEncumbranceFull = state => state.encumbranceBar.position >= 11;
 
-const isExperienceBarFull = state => state.experienceBar.position >= state.experienceBar.total;
+const isExperienceBarFull = state => state.experienceBar.position >= state.experienceBar.total - 1;
 
-const isPlotBarFull = state => state.plotBar.position >= state.plotBar.total;
+const isPlotBarFull = state => state.plotBar.position >= state.plotBar.total - 1;
 
-const isQuestBarFull = state => state.questBar.position >= state.questBar.total;
+const isQuestBarFull = state => state.questBar.position >= state.questBar.total - 1;
 
 const isTaskBarFull = state => state.taskBar.position > 100;
 
@@ -26,7 +26,7 @@ const nextEquipmentPrice = state =>
 const currentMonsterLoot = state =>
   `${state.taskBar.monster.name.toLowerCase()} ${state.taskBar.monster.loot}`;
 
-const nextLevelUpTime = state => 20 * getLevel(state) * 60;
+const nextLevelUpTime = state => 20 * (getLevel(state) + 1) * 60;
 
 export const helpers = {
   isEncumbranceFull,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Box, Grid } from 'grommet';
 import { connect } from 'react-redux';
@@ -19,7 +19,15 @@ const NewCharacterContainer = ({
   chooseClass,
   chooseRace,
   updateName
-}) => (
+}) => {
+  useEffect(() => {
+    if (!traits.Name) {
+      generateName();
+      roll();
+    }
+  });
+
+  return (
     <Grid
       areas={[
         { name: 'top', start: [0, 0], end: [2, 0] },
@@ -56,6 +64,7 @@ const NewCharacterContainer = ({
       <StatsGeneration gridArea="stats" stats={stats} onRoll={roll} onSold={sold} />
     </Grid>
   );
+};
 
 const mapStateToProps = state => ({
   traits: getTraits(state),

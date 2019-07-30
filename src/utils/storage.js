@@ -40,3 +40,11 @@ export const load = () => {
   const data = JSON.parse(window.localStorage.getItem('roster'));
   return data[name];
 };
+
+export const gameDataList = () => {
+  try {
+    return Object.keys(JSON.parse(window.localStorage.roster));
+  } catch (_error) {
+    return [];
+  }
+};

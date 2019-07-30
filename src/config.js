@@ -648,18 +648,18 @@ window.K.Races = [
   'Dung Elf|WIS',
   'Talking Pony|MP Max,INT',
   'Gyrognome|DEX',
-  'Lesser Dwarf|CON',
-  'Crested Dwarf|CHA',
-  'Eel Man|DEX',
-  'Panda Man|CON,STR',
-  'Trans-Kobold|WIS',
-  'Enchanted Motorcycle|MP Max',
-  "Will o' the Wisp|WIS",
-  'Battle-Finch|DEX,INT',
-  'Double Wookiee|STR',
-  'Skraeling|WIS',
-  'Demicanadian|CON',
-  'Land Squid|STR,HP Max'
+  'Lesser Dwarf|CON'
+  // 'Crested Dwarf|CHA'
+  // 'Eel Man|DEX',
+  // 'Panda Man|CON,STR',
+  // 'Trans-Kobold|WIS',
+  // 'Enchanted Motorcycle|MP Max',
+  // "Will o' the Wisp|WIS",
+  // 'Battle-Finch|DEX,INT',
+  // 'Double Wookiee|STR',
+  // 'Skraeling|WIS',
+  // 'Demicanadian|CON',
+  // 'Land Squid|STR,HP Max'
 ];
 
 window.K.Klasses = [
@@ -672,15 +672,15 @@ window.K.Klasses = [
   'Inner Mason|CON',
   'Fighter/Organist|CHA,STR',
   'Puma Burgular|DEX',
-  'Runeloremaster|WIS',
-  'Hunter Strangler|DEX,INT',
-  'Battle-Felon|STR',
-  'Tickle-Mimic|WIS,INT',
-  'Slow Poisoner|CON',
-  'Bastard Lunatic|CON',
-  'Lowling|WIS',
-  'Birdrider|WIS',
-  'Vermineer|INT'
+  'Runeloremaster|WIS'
+  // 'Hunter Strangler|DEX,INT'
+  // 'Battle-Felon|STR',
+  // 'Tickle-Mimic|WIS,INT',
+  // 'Slow Poisoner|CON',
+  // 'Bastard Lunatic|CON',
+  // 'Lowling|WIS',
+  // 'Birdrider|WIS',
+  // 'Vermineer|INT'
 ];
 
 window.K.Titles = ['Mr.', 'Mrs.', 'Sir', 'Sgt.', 'Ms.', 'Captain', 'Chief', 'Admiral', 'Saint'];

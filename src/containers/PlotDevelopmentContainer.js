@@ -6,22 +6,18 @@ import { getPosition } from '../reducers/bars/plotBar';
 import PlotDevelopment from '../components/PlotDevelopment';
 
 const PlotDevelopmentContainer = ({ plotDevelopment, plotProgress }) => (
-  <PlotDevelopment data={plotDevelopment} plotProgress={plotProgress} />
+  // eslint-disable-next-line react/jsx-filename-extension
+  <PlotDevelopment plotDevelopment={plotDevelopment} plotProgress={plotProgress} />
 );
 
-// InventoryContainer.propTypes = {
-//   inventory: PropTypes.arrayOf(PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     quantity: PropTypes.number.isRequired,
-//   })).isRequired,
-// }
+PlotDevelopmentContainer.propTypes = {
+  plotDevelopment: PropTypes.isRequired,
+  plotProgress: PropTypes.isRequired
+};
 
 const mapStateToProps = state => ({
   plotDevelopment: getPlotDevelopment(state),
   plotProgress: getPosition(state)
 });
 
-export default connect(
-  mapStateToProps
-  // { checkout }
-)(PlotDevelopmentContainer);
+export default connect(mapStateToProps)(PlotDevelopmentContainer);

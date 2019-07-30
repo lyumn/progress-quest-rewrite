@@ -17,7 +17,6 @@ const styles = {
   }
 };
 
-// TODO text on the progress bar
 const ProgressBar = ({ width }) => (
   <div style={styles.container}>
     <div style={{ ...styles.progress, width }} />

@@ -16,14 +16,16 @@ const styles = {
     left: 15,
     display: 'inline-block',
     padding: '0 6px'
+  },
+  body: {
+    margin: '10px'
   }
 };
 
-// TODO need a font for title
 const BoxWithTitle = ({ title, children }) => (
   <div style={styles.box}>
     <div style={styles.title}>{title}</div>
-    <div style={{ margin: '10px' }}>{children}</div>
+    <div style={styles.body}>{children}</div>
   </div>
 );
 

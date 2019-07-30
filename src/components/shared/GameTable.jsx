@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, TableBody, TableCell, TableFooter, TableHeader, TableRow, Text } from 'grommet';
+import { Table, TableBody, TableCell, TableHeader, TableRow, Text } from 'grommet';
 
 const styles = {
   text: {
@@ -51,13 +51,22 @@ const GameTable = ({ data, columns, hasHeader }) => {
   );
 };
 
+TextWraper.propTypes = {
+  children: PropTypes.element.isRequired
+};
+
 GameTable.defaultProps = {
   hasHeader: true
 };
 
 GameTable.propTypes = {
-  data: PropTypes.array.isRequired,
-  columns: PropTypes.array.isRequired,
+  data: PropTypes.isRequired,
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      property: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired
+    })
+  ).isRequired,
   hasHeader: PropTypes.bool
 };
 

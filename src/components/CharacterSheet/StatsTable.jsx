@@ -13,21 +13,19 @@ const COLUMNS = [
   }
 ];
 
-const StatsTable = props => {
-  const data = Object.keys(props.stats)
+const StatsTable = ({ stats }) => {
+  const data = Object.keys(stats)
     .filter(e => e !== 'seed')
-    .map(function(key) {
-      return {
-        stat: key,
-        value: props.stats[key]
-      };
-    });
+    .map(key => ({
+      stat: key,
+      value: stats[key]
+    }));
 
-  return <GameTable data={data} columns={COLUMNS} hasHeader={true} />;
+  return <GameTable data={data} columns={COLUMNS} hasHeader />;
 };
 
 StatsTable.propTypes = {
-  stats: PropTypes.object.isRequired
+  stats: PropTypes.isRequired
 };
 
 export default StatsTable;

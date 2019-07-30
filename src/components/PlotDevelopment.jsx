@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Grid, CheckBox } from 'grommet';
 import romanize from 'romanize';
+import PropTypes from 'prop-types';
 import BoxWithTitle from './shared/BoxWithTitle';
 import ProgressBar from './shared/ProgressBar';
 
@@ -9,37 +10,39 @@ const range = (start, end) => {
   return Array.from({ length }, (_, i) => start + i);
 }; // use _.takeRight(arr, 5);
 
-const PlotDevelopment = props => (
+const PlotDevelopment = ({ plotDevelopment, plotProgress }) => (
   <Grid
     areas={[
       { name: 'table', start: [0, 0], end: [0, 0] },
       { name: 'tracking', start: [0, 1], end: [0, 1] }
     ]}
     columns={['flex']}
-    rows={['flex', '20px']}
+    rows={['flex', '25px']}
     gap="small"
   >
     <BoxWithTitle gridArea="table" title="Plot Development">
       <CheckBox checked label="Prologue" style={{ margin: '2px 0px' }} />
-      {range(1, props.data.Act).map(e => (
+      {range(1, plotDevelopment.Act).map(e => (
         <CheckBox
-          checked={e != props.data.Act}
+          checked={e !== plotDevelopment.Act}
           label={`Act ${romanize(e)}`}
           style={{ margin: '2px 0px' }}
         />
       ))}
     </BoxWithTitle>
     <Box gridArea="tracking">
-      <ProgressBar width={props.plotProgress} />
+      <ProgressBar width={plotProgress} />
     </Box>
   </Grid>
 );
 
-// Inventory.propTypes = {
-//   data: PropTypes.arrayOf(PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     quantity: PropTypes.number.isRequired,
-//   })).isRequired,
-// }
+PlotDevelopment.propTypes = {
+  plotDevelopment: PropTypes.arrayOf(
+    PropTypes.shape({
+      Act: PropTypes.number.isRequired
+    })
+  ).isRequired,
+  plotProgress: PropTypes.string.isRequired
+};
 
 export default PlotDevelopment;

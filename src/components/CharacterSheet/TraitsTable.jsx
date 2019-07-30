@@ -13,19 +13,17 @@ const COLUMNS = [
   }
 ];
 
-const TraitsTable = props => {
-  const data = Object.keys(props.traits).map(function(key) {
-    return {
-      trait: key,
-      value: props.traits[key]
-    };
-  });
+const TraitsTable = ({ traits }) => {
+  const data = Object.keys(traits).map(key => ({
+    trait: key,
+    value: traits[key]
+  }));
 
   return <GameTable data={data} columns={COLUMNS} hasHeader />;
 };
 
 TraitsTable.propTypes = {
-  // width: PropTypes.string.isRequired,
+  traits: PropTypes.string.isRequired
 };
 
 export default TraitsTable;

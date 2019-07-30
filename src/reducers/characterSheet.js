@@ -5,8 +5,8 @@ import { loadGame } from './concerns/loadStorage';
 const initialState = {
   Traits: {
     Name: '',
-    Race: '',
-    Class: '',
+    Race: 'Half Orc',
+    Class: 'Ur-Paladin',
     Level: 1
   },
   Stats: {

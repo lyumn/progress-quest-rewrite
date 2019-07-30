@@ -11,26 +11,8 @@ const CharacterSheetContainer = ({ characterSheet, experience }) => (
 );
 
 CharacterSheetContainer.propTypes = {
-  characterSheet: PropTypes.shape({
-    Stats: PropTypes.shape({
-      CHA: PropTypes.number.isRequired,
-      CON: PropTypes.number.isRequired,
-      DEX: PropTypes.number.isRequired,
-      'HP Max': PropTypes.number.isRequired,
-      INT: PropTypes.number.isRequired,
-      'MP Max': PropTypes.number.isRequired,
-      STR: PropTypes.number.isRequired,
-      WIS: PropTypes.number.isRequired,
-      seed: PropTypes.array.isRequired
-    }).isRequired,
-    Traits: PropTypes.shape({
-      Class: PropTypes.string.isRequired,
-      Level: PropTypes.number.isRequired,
-      Name: PropTypes.string.isRequired,
-      Race: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired,
-  experience: PropTypes.string.isRequired
+  characterSheet: PropTypes.isRequired,
+  experience: PropTypes.isRequired
 };
 
 const mapStateToProps = state => ({

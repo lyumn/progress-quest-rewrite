@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Box, Grid } from 'grommet';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { sold } from '../reducers/helpers/newCharacter';
 import { getTraits, getStats } from '../reducers/characterSheet';
 import StatsGeneration from '../components/NewCharacter/StatsGeneration';
@@ -13,12 +14,14 @@ import { roll, generateName, chooseClass, chooseRace, updateName } from '../acti
 const NewCharacterContainer = ({
   traits,
   stats,
+  /* eslint-disable no-shadow */
   roll,
   sold,
   generateName,
   chooseClass,
   chooseRace,
   updateName
+  /* eslint-enable no-shadow */
 }) => {
   useEffect(() => {
     if (!traits.Name) {
@@ -28,6 +31,7 @@ const NewCharacterContainer = ({
   });
 
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <Grid
       areas={[
         { name: 'top', start: [0, 0], end: [2, 0] },
@@ -37,15 +41,13 @@ const NewCharacterContainer = ({
         { name: 'stats', start: [2, 2], end: [2, 2] }
       ]}
       columns={['1/3', '1/3', '1/3']}
-      rows={['xxsmall', 'xsmall', 'large']}
+      rows={['xxsmall', 'xxsmall', 'medium']}
       gap="small"
-      style={{ width: '686px', margin: '0 auto' }}
-      id="main"
+      id="new-character"
     >
       <Box gridArea="top">
         <h1>Progress Quest</h1>
       </Box>
-      {/* <Box gridArea='name-generation' background='brand' /> */}
       <Box gridArea="name-generation">
         <NameGeneration name={traits.Name} onGenerateName={generateName} onUpdate={updateName} />
       </Box>
@@ -64,6 +66,17 @@ const NewCharacterContainer = ({
       <StatsGeneration gridArea="stats" stats={stats} onRoll={roll} onSold={sold} />
     </Grid>
   );
+};
+
+NewCharacterContainer.propTypes = {
+  traits: PropTypes.isRequired,
+  stats: PropTypes.isRequired,
+  sold: PropTypes.isRequired,
+  roll: PropTypes.isRequired,
+  generateName: PropTypes.isRequired,
+  chooseClass: PropTypes.isRequired,
+  chooseRace: PropTypes.isRequired,
+  updateName: PropTypes.isRequired
 };
 
 const mapStateToProps = state => ({

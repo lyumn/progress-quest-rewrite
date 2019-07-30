@@ -6,16 +6,12 @@ import { getPosition } from '../reducers/bars/encumbranceBar';
 import Inventory from '../components/Inventory';
 
 const InventoryContainer = ({ inventory, encumbrance }) => (
-  <Inventory data={inventory} encumbrance={encumbrance} />
+  // eslint-disable-next-line react/jsx-filename-extension
+  <Inventory inventory={inventory} encumbrance={encumbrance} />
 );
 
 InventoryContainer.propTypes = {
-  inventory: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      quantity: PropTypes.number.isRequired
-    })
-  ).isRequired,
+  inventory: PropTypes.isRequired,
   encumbrance: PropTypes.string.isRequired
 };
 
@@ -24,7 +20,4 @@ const mapStateToProps = state => ({
   encumbrance: getPosition(state)
 });
 
-export default connect(
-  mapStateToProps
-  // { checkout }
-)(InventoryContainer);
+export default connect(mapStateToProps)(InventoryContainer);

@@ -5,21 +5,19 @@ import { getQuests } from '../reducers/quests';
 import { getPosition } from '../reducers/bars/questBar';
 import Quests from '../components/Quests';
 
-const QuestsContainer = ({ quests, questProgress }) => <Quests data={quests} questProgress={questProgress} />;
+const QuestsContainer = ({ quests, questProgress }) => (
+  // eslint-disable-next-line react/jsx-filename-extension
+  <Quests quests={quests} questProgress={questProgress} />
+);
 
-// InventoryContainer.propTypes = {
-//   inventory: PropTypes.arrayOf(PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     quantity: PropTypes.number.isRequired,
-//   })).isRequired,
-// }
+QuestsContainer.propTypes = {
+  quests: PropTypes.isRequired,
+  questProgress: PropTypes.isRequired
+};
 
 const mapStateToProps = state => ({
   quests: getQuests(state),
-  questProgress: getPosition(state),
+  questProgress: getPosition(state)
 });
 
-export default connect(
-  mapStateToProps
-  // { checkout }
-)(QuestsContainer);
+export default connect(mapStateToProps)(QuestsContainer);

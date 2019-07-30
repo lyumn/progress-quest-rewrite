@@ -24,10 +24,10 @@ const InventoryTable = props => {
     };
   });
 
-  return <GameTable data={data} columns={COLUMNS} hasHeader={true} />;
+  return <GameTable data={data} columns={COLUMNS} hasHeader />;
 };
 
-const Inventory = props => (
+const Inventory = ({ inventory, encumbrance }) => (
   <Grid
     areas={[
       { name: 'table', start: [0, 0], end: [0, 0] },
@@ -38,22 +38,23 @@ const Inventory = props => (
     gap="small"
   >
     <BoxWithTitle gridArea="table" title="Inventory">
-      <InventoryTable items={props.data} />
+      <InventoryTable items={inventory} />
     </BoxWithTitle>
     <Box gridArea="tracking">
       <div>Encumbrance</div>
-      <ProgressBar width={props.encumbrance} />
+      <ProgressBar width={encumbrance} />
     </Box>
   </Grid>
 );
 
 Inventory.propTypes = {
-  data: PropTypes.arrayOf(
+  inventory: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       quantity: PropTypes.number.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  encumbrance: PropTypes.string.isRequired
 };
 
 export default Inventory;

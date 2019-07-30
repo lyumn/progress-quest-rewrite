@@ -3,6 +3,11 @@ body {
   background-color: #2a1d0d;
 }
 
+#main, #new-character {
+  width: 686px;
+  margin: 0 auto;
+}
+
 .App {
   text-align: center;
   zoom: 70%;

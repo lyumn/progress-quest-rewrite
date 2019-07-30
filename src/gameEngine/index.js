@@ -3,8 +3,8 @@ import completeTask from './completeTask';
 import { save } from '../utils/storage';
 
 const delayedCall = async action => {
-  await delay(100);
-  // await delay(10);
+  // await delay(100);
+  await delay(30);
   action();
 };
 
@@ -35,11 +35,11 @@ const start = async ({
   if (isTaskBarFull(data)) {
     if (isExperienceBarFull(data)) {
       levelUp(nextLevelUpTime(data));
-    } else if (currentTaskType(data) == 'kill') {
+    } else if (currentTaskType(data) === 'kill') {
       incrementExperience(1);
     }
-    if (currentTaskType(data) == 'kill' || currentTaskType(data) == 'heading') {
-      if (isQuestBarFull(data) || data.quests.length == 0) {
+    if (currentTaskType(data) === 'kill' || currentTaskType(data) === 'heading') {
+      if (isQuestBarFull(data) || data.quests.length === 0) {
         completeQuest();
       } else {
         incrementQuest(1);

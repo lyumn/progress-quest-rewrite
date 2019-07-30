@@ -4,20 +4,15 @@ import { connect } from 'react-redux';
 import { getSpellBook } from '../reducers/spellBook';
 import SpellBook from '../components/SpellBook';
 
-const SpellBookContainer = ({ spellBook }) => <SpellBook data={spellBook} />;
+// eslint-disable-next-line react/jsx-filename-extension
+const SpellBookContainer = ({ spellBook }) => <SpellBook spellBook={spellBook} />;
 
-// InventoryContainer.propTypes = {
-//   inventory: PropTypes.arrayOf(PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     quantity: PropTypes.number.isRequired,
-//   })).isRequired,
-// }
+SpellBookContainer.propTypes = {
+  spellBook: PropTypes.isRequired
+};
 
 const mapStateToProps = state => ({
   spellBook: getSpellBook(state)
 });
 
-export default connect(
-  mapStateToProps
-  // { checkout }
-)(SpellBookContainer);
+export default connect(mapStateToProps)(SpellBookContainer);

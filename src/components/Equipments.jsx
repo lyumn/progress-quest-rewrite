@@ -21,9 +21,9 @@ const EquipmentTable = ({ equipments }) => {
   return <GameTable data={data} columns={COLUMNS} hasHeader={false} />;
 };
 
-const Equipments = ({ data }) => (
+const Equipments = ({ equipments }) => (
   <BoxWithTitle gridArea="table" title="Equipments">
-    <EquipmentTable equipments={data} />
+    <EquipmentTable equipments={equipments} />
   </BoxWithTitle>
 );
 
@@ -43,6 +43,6 @@ EquipmentTable.propTypes = {
   }).isRequired
 };
 
-Equipments.propTypes = { data: PropTypes.isRequired };
+Equipments.propTypes = { equipments: PropTypes.isRequired };
 
 export default Equipments;

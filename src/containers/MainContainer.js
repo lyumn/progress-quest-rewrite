@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Box, Grid } from 'grommet';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import CharacterSheetContainer from './CharacterSheetContainer';
 import InventoryContainer from './InventoryContainer';
 import EquipmentsContainer from './EquipmentsContainer';
@@ -27,29 +28,22 @@ import {
   sellOne
 } from '../actions';
 
-// const incrementTaskBar = async () => {
-//   await delay(50);
-//   incrementTask()
-// };
-// const startGame = (data) => {
-//   // if ()
-//   // debugger;
-//   if (data.taskBar.position == '100%') {
-//     debugger;
-//   } else {
-//     incrementTaskBar()
-//   }
-// }
-
 const MainContainer = props => {
   useEffect(() => {
     if (!props.data.characterSheet.Traits.Name) {
       props.loadGame();
     }
-    start(props);
+
+    try {
+      start(props);
+    } catch (_err) {
+      // eslint-disable-next-line no-undef
+      window.location.reload();
+    }
   });
 
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <Grid
       areas={[
         { name: 'top', start: [0, 0], end: [2, 0] },
@@ -64,7 +58,7 @@ const MainContainer = props => {
       columns={['1/3', '1/3', '1/3']}
       rows={['xxsmall', 'medium', 'medium', 'small']}
       gap="small"
-      style={{ width: '686px', margin: '0 auto' }}
+      id="main"
     >
       <Box gridArea="top">
         <h1>Progress Quest</h1>
@@ -81,6 +75,25 @@ const MainContainer = props => {
     </Grid>
   );
 };
+
+/* eslint-disable react/no-unused-prop-types */
+MainContainer.propTypes = {
+  data: PropTypes.isRequired,
+  helpers: PropTypes.isRequired,
+  loadGame: PropTypes.isRequired,
+  incrementTask: PropTypes.isRequired,
+  levelUp: PropTypes.isRequired,
+  completeQuest: PropTypes.isRequired,
+  completePlot: PropTypes.isRequired,
+  nextTask: PropTypes.isRequired,
+  incrementExperience: PropTypes.isRequired,
+  incrementQuest: PropTypes.isRequired,
+  incrementPlot: PropTypes.isRequired,
+  loot: PropTypes.isRequired,
+  buy: PropTypes.isRequired,
+  sellOne: PropTypes.isRequired
+};
+/* eslint-enable react/no-unused-prop-types */
 
 const mapStateToProps = state => ({
   data: getMain(state),

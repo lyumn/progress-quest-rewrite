@@ -1,21 +1,22 @@
 import React from 'react';
 import { Box, RadioButton } from 'grommet';
+import PropTypes from 'prop-types';
 import BoxWithTitle from '../shared/BoxWithTitle';
 
-const RaceSelection = props => {
-  // debugger;
+const RaceSelection = ({ selected, onSelect }) => {
   return (
-    <BoxWithTitle title="Stats">
+    <BoxWithTitle title="Select Race">
       {' '}
-      {window.K.Races.map(text => {
+      {// eslint-disable-next-line no-undef
+      window.K.Races.map(text => {
         const label = text.split('|')[0];
         return (
           <Box key={label} margin={{ vertical: 'small' }}>
             <RadioButton
               name="prop"
-              checked={props.selected === label}
+              checked={selected === label}
               label={label}
-              onChange={() => props.onSelect(label)}
+              onChange={() => onSelect(label)}
             />
           </Box>
         );
@@ -23,4 +24,10 @@ const RaceSelection = props => {
     </BoxWithTitle>
   );
 };
+
+RaceSelection.propTypes = {
+  selected: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired
+};
+
 export default RaceSelection;

@@ -2,9 +2,11 @@
   "name": "progress-quest-rewrite",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lyumn.github.io/progress-quest-rewrite",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "delay": "^4.3.0",
+    "gh-pages": "^2.0.1",
     "grommet": "^2.7.1",
     "humanize-plus": "^1.8.2",
     "lodash": "^4.17.14",
@@ -27,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "airbnb-base",

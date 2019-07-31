@@ -8,7 +8,7 @@ import Equipments from '../components/Equipments';
 const EquipmentContainer = ({ equipments }) => <Equipments equipments={equipments} />;
 
 EquipmentContainer.propTypes = {
-  equipments: PropTypes.isRequired
+  equipments: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

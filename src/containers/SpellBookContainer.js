@@ -8,7 +8,7 @@ import SpellBook from '../components/SpellBook';
 const SpellBookContainer = ({ spellBook }) => <SpellBook spellBook={spellBook} />;
 
 SpellBookContainer.propTypes = {
-  spellBook: PropTypes.isRequired
+  spellBook: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({

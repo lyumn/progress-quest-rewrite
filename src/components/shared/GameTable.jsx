@@ -32,8 +32,8 @@ const GameTable = ({ data, columns, hasHeader }) => {
         </TableHeader>
       )}
       <TableBody>
-        {data.map(datum => (
-          <TableRow key={datum.id}>
+        {data.map((datum, i) => (
+          <TableRow key={`row-${i}`}>
             {columns.map(c => (
               <TableCell
                 key={c.property}
@@ -52,7 +52,7 @@ const GameTable = ({ data, columns, hasHeader }) => {
 };
 
 TextWraper.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.string.isRequired
 };
 
 GameTable.defaultProps = {
@@ -60,7 +60,7 @@ GameTable.defaultProps = {
 };
 
 GameTable.propTypes = {
-  data: PropTypes.isRequired,
+  data: PropTypes.array.isRequired,
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       property: PropTypes.string.isRequired,

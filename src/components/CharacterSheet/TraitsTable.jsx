@@ -23,7 +23,7 @@ const TraitsTable = ({ traits }) => {
 };
 
 TraitsTable.propTypes = {
-  traits: PropTypes.string.isRequired
+  traits: PropTypes.object.isRequired
 };
 
 export default TraitsTable;

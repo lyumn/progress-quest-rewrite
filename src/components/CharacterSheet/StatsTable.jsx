@@ -25,7 +25,7 @@ const StatsTable = ({ stats }) => {
 };
 
 StatsTable.propTypes = {
-  stats: PropTypes.isRequired
+  stats: PropTypes.object.isRequired
 };
 
 export default StatsTable;

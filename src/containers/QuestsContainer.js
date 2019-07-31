@@ -11,8 +11,8 @@ const QuestsContainer = ({ quests, questProgress }) => (
 );
 
 QuestsContainer.propTypes = {
-  quests: PropTypes.isRequired,
-  questProgress: PropTypes.isRequired
+  quests: PropTypes.array.isRequired,
+  questProgress: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

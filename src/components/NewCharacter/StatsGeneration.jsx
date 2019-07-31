@@ -25,7 +25,7 @@ const StatsGeneration = ({ stats, onRoll, onSold }) => {
 };
 
 StatsGeneration.propTypes = {
-  stats: PropTypes.isRequired,
+  stats: PropTypes.object.isRequired,
   onRoll: PropTypes.func.isRequired,
   onSold: PropTypes.func.isRequired
 };

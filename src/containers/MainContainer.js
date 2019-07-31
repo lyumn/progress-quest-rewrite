@@ -78,20 +78,20 @@ const MainContainer = props => {
 
 /* eslint-disable react/no-unused-prop-types */
 MainContainer.propTypes = {
-  data: PropTypes.isRequired,
-  helpers: PropTypes.isRequired,
-  loadGame: PropTypes.isRequired,
-  incrementTask: PropTypes.isRequired,
-  levelUp: PropTypes.isRequired,
-  completeQuest: PropTypes.isRequired,
-  completePlot: PropTypes.isRequired,
-  nextTask: PropTypes.isRequired,
-  incrementExperience: PropTypes.isRequired,
-  incrementQuest: PropTypes.isRequired,
-  incrementPlot: PropTypes.isRequired,
-  loot: PropTypes.isRequired,
-  buy: PropTypes.isRequired,
-  sellOne: PropTypes.isRequired
+  data: PropTypes.object.isRequired,
+  helpers: PropTypes.object.isRequired,
+  loadGame: PropTypes.func.isRequired,
+  incrementTask: PropTypes.func.isRequired,
+  levelUp: PropTypes.func.isRequired,
+  completeQuest: PropTypes.func.isRequired,
+  completePlot: PropTypes.func.isRequired,
+  nextTask: PropTypes.func.isRequired,
+  incrementExperience: PropTypes.func.isRequired,
+  incrementQuest: PropTypes.func.isRequired,
+  incrementPlot: PropTypes.func.isRequired,
+  loot: PropTypes.func.isRequired,
+  buy: PropTypes.func.isRequired,
+  sellOne: PropTypes.func.isRequired
 };
 /* eslint-enable react/no-unused-prop-types */
 

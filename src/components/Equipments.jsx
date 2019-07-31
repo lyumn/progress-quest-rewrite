@@ -43,6 +43,6 @@ EquipmentTable.propTypes = {
   }).isRequired
 };
 
-Equipments.propTypes = { equipments: PropTypes.isRequired };
+Equipments.propTypes = { equipments: PropTypes.array.isRequired };
 
 export default Equipments;

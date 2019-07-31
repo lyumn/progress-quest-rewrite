@@ -22,8 +22,9 @@ const PlotDevelopment = ({ plotDevelopment, plotProgress }) => (
   >
     <BoxWithTitle gridArea="table" title="Plot Development">
       <CheckBox checked label="Prologue" style={{ margin: '2px 0px' }} />
-      {range(1, plotDevelopment.Act).map(e => (
+      {range(1, plotDevelopment.Act).map((e, i) => (
         <CheckBox
+          key={`pd-${i}`}
           checked={e !== plotDevelopment.Act}
           label={`Act ${romanize(e)}`}
           style={{ margin: '2px 0px' }}

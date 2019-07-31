@@ -29,7 +29,7 @@ const SpellBook = ({ spellBook }) => (
 );
 
 SpellBook.propTypes = {
-  spellBook: PropTypes.isRequired
+  spellBook: PropTypes.array.isRequired
 };
 
 SpellBookTable.propTypes = {

@@ -11,8 +11,8 @@ const PlotDevelopmentContainer = ({ plotDevelopment, plotProgress }) => (
 );
 
 PlotDevelopmentContainer.propTypes = {
-  plotDevelopment: PropTypes.isRequired,
-  plotProgress: PropTypes.isRequired
+  plotDevelopment: PropTypes.object.isRequired,
+  plotProgress: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

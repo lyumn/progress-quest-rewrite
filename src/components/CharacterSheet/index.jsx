@@ -38,8 +38,7 @@ CharacterSheet.propTypes = {
       INT: PropTypes.number.isRequired,
       'MP Max': PropTypes.number.isRequired,
       STR: PropTypes.number.isRequired,
-      WIS: PropTypes.number.isRequired,
-      seed: PropTypes.array.isRequired
+      WIS: PropTypes.number.isRequired
     }).isRequired,
     Traits: PropTypes.shape({
       Class: PropTypes.string.isRequired,

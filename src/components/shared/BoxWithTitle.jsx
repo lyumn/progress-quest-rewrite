@@ -31,7 +31,7 @@ const BoxWithTitle = ({ title, children }) => (
 
 BoxWithTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.array.isRequired
 };
 
 export default BoxWithTitle;

@@ -11,8 +11,8 @@ const CharacterSheetContainer = ({ characterSheet, experience }) => (
 );
 
 CharacterSheetContainer.propTypes = {
-  characterSheet: PropTypes.isRequired,
-  experience: PropTypes.isRequired
+  characterSheet: PropTypes.object.isRequired,
+  experience: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

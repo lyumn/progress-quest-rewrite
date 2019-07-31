@@ -31,7 +31,12 @@ const Quests = ({ quests, questProgress }) => {
     >
       <BoxWithTitle gridArea="table" title="Quests">
         {array.map((e, i) => (
-          <CheckBox checked={i < array.length - 1} label={e} style={styles.checkBox} />
+          <CheckBox
+            checked={i < array.length - 1}
+            label={e}
+            style={styles.checkBox}
+            key={`quest-${i}`}
+          />
         ))}
       </BoxWithTitle>
       <Box gridArea="tracking">

@@ -3,8 +3,7 @@ import completeTask from './completeTask';
 import { save } from '../utils/storage';
 
 const delayedCall = async action => {
-  // await delay(100);
-  await delay(30);
+  await delay(100);
   action();
 };
 

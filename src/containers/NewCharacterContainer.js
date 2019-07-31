@@ -69,14 +69,14 @@ const NewCharacterContainer = ({
 };
 
 NewCharacterContainer.propTypes = {
-  traits: PropTypes.isRequired,
-  stats: PropTypes.isRequired,
-  sold: PropTypes.isRequired,
-  roll: PropTypes.isRequired,
-  generateName: PropTypes.isRequired,
-  chooseClass: PropTypes.isRequired,
-  chooseRace: PropTypes.isRequired,
-  updateName: PropTypes.isRequired
+  traits: PropTypes.object.isRequired,
+  stats: PropTypes.object.isRequired,
+  sold: PropTypes.object.isRequired,
+  roll: PropTypes.object.isRequired,
+  generateName: PropTypes.object.isRequired,
+  chooseClass: PropTypes.object.isRequired,
+  chooseRace: PropTypes.object.isRequired,
+  updateName: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -11,7 +11,7 @@ const InventoryContainer = ({ inventory, encumbrance }) => (
 );
 
 InventoryContainer.propTypes = {
-  inventory: PropTypes.isRequired,
+  inventory: PropTypes.array.isRequired,
   encumbrance: PropTypes.string.isRequired
 };
 

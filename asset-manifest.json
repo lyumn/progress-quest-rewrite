@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/progress-quest-rewrite/static/css/main.f1765acb.chunk.css",
+    "main.js": "/progress-quest-rewrite/static/js/main.9305e143.chunk.js",
+    "main.js.map": "/progress-quest-rewrite/static/js/main.9305e143.chunk.js.map",
+    "runtime~main.js": "/progress-quest-rewrite/static/js/runtime~main.68c36208.js",
+    "runtime~main.js.map": "/progress-quest-rewrite/static/js/runtime~main.68c36208.js.map",
+    "static/js/2.ef1df4d3.chunk.js": "/progress-quest-rewrite/static/js/2.ef1df4d3.chunk.js",
+    "static/js/2.ef1df4d3.chunk.js.map": "/progress-quest-rewrite/static/js/2.ef1df4d3.chunk.js.map",
+    "index.html": "/progress-quest-rewrite/index.html",
+    "precache-manifest.8b5a3098f3a312334170a52e193000e2.js": "/progress-quest-rewrite/precache-manifest.8b5a3098f3a312334170a52e193000e2.js",
+    "service-worker.js": "/progress-quest-rewrite/service-worker.js",
+    "static/css/main.f1765acb.chunk.css.map": "/progress-quest-rewrite/static/css/main.f1765acb.chunk.css.map"
+  }
+}

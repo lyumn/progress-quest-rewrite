@@ -2,7 +2,7 @@
   "name": "progress-quest-rewrite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lyumn.github.io/progress-quest-rewrite",
+  "homepage": "https://progress-quest.herokuapp.com/",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "delay": "^4.3.0",

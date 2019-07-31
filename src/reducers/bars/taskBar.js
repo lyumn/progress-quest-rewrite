@@ -5,7 +5,7 @@ const TOTAL = 100; // change to 20
 
 const initialState = {
   position: 0,
-  task: '',
+  task: 'Starting game',
   taskType: 'kill',
   monster: { name: 'Violet Fungi', level: '3', loot: 'spore' }
 };

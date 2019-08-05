@@ -1,3 +1,7 @@
+/*
+  This file is mostly as it was and it needs more rewrite. Consider to remove window.K variable.
+*/
+
 window.K = {};
 
 window.K.Traits = ['Name', 'Race', 'Class', 'Level'];

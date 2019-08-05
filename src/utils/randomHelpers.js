@@ -1,3 +1,7 @@
+/*
+  This file needs a lot of rewrite to increase readability.
+*/
+
 import random from 'random';
 import Humanize from 'humanize-plus';
 

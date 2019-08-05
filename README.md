@@ -4,6 +4,11 @@ This is a modern redesign/rewrite for old 0-player adventure game Progress Quest
 
 This project is bootstrapped from Create React App, and uses Redux for flux and Grommet for UI components.
 
+## Demo
+
+https://progress-quest.herokuapp.com
+
+
 ## Goals
 
 I wanted to rewrite the original Progress Quest web version (https://github.com/rudle/progress-quest) in React and modern frontend architecture with a better UI. Also I'd like to learn Redux and Grommet. It's my first project using them.
@@ -15,10 +20,6 @@ Working in Progress.
 ## Requirements
 
 This game requires browser storage to be enabled.
-
-## Demo
-
-https://progress-quest.herokuapp.com
 
 ## Known Issues
 

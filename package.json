@@ -68,6 +68,6 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
     "prettier": "1.18.2",
-    "react-dev-utils": "^9.0.1"
+    "react-dev-utils": "^11.0.4"
   }
 }
